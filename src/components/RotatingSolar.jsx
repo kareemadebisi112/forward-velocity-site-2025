@@ -262,7 +262,6 @@ const RotatingSolar = () => {
       innerGlow.material.opacity = 0.15 + 0.08 * Math.sin(t * 2.0);
       innerPointLight.intensity = 0.8 + 0.4 * Math.sin(t * 2.0);
       domeGroup.rotation.y = Math.sin(t * 0.3) * 0.1;
-
       if (domeOnlyLights) {
         domeOnlyLights.position.copy(mainGroup.position);
         domeOnlyLights.rotation.copy(mainGroup.rotation);
