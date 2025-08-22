@@ -1,11 +1,11 @@
-import React from "react";
-import RotatingSolar from "./components/RotatingSolar";
 import Hero from "./components/Hero";
+import FoundersSection from "./components/FoundersSection";
 
 function App() {
   return (
-    <div>
+    <div className="bg-black-dark text-white">
       <Hero />
+      <FoundersSection />
     </div>
   );
 }

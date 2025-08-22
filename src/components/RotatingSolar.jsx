@@ -290,12 +290,7 @@ const RotatingSolar = () => {
   }, []); // Empty dependency array means this effect runs once on mount
 
   // Return the JSX for the component
-  return (
-    <div
-      ref={containerRef}
-      style={{ width: "100vw", height: "100vh", background: "black" }}
-    />
-  );
+  return <div ref={containerRef} style={{ width: "100%", height: "100%" }} />;
 };
 
 export default RotatingSolar;
