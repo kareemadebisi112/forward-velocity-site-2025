@@ -5,8 +5,9 @@
   --color-white: #FFFFFF;
   --color-gray-text: #999999;
   --color-gray-bg: #2B2B2B;
-  --color-black: #141415;
+  /* --color-black: #141415; */
   --color-black-dark: #000000;
+  --color-black-fade: #101010;
   --color-fade-green: #6A8C69;
   --color-fade-gray: #E7EBE7;
 }

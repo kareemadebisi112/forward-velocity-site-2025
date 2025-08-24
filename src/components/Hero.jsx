@@ -35,7 +35,7 @@ const Hero = () => {
               and thrive in changing environments.
             </p>
 
-            <Button className="px-10 py-5 text-lg">See What's Broken</Button>
+            <Button glow className="px-10 py-5 text-lg">See What's Broken</Button>
           </div>
         </main>
       </div>
