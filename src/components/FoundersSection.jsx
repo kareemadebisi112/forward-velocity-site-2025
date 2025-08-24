@@ -43,7 +43,7 @@ const FoundersSection = () => (
     </div>
     {/* Card */}
     <div
-      className="w-full max-w-5xl bg-white rounded-[2rem] shadow-xl flex flex-col md:flex-row p-8 md:p-14 gap-8 md:gap-0"
+      className="w-full max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-white rounded-[2rem] shadow-xl flex flex-col md:flex-row p-8 md:p-14 gap-8 md:gap-0"
       style={{ borderRadius: "2rem 2rem 2rem 4rem" }}
     >
       {/* Left */}
