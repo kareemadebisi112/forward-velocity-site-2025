@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div className="relative w-full h-screen">
       <div className="absolute top-0 right-0 w-full h-full z-0">
-        {/* <RotatingSolar /> */}
+        <RotatingSolar />
       </div>
 
       {/* Overlay for transparency */}

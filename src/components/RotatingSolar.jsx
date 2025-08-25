@@ -27,7 +27,7 @@ const RotatingSolar = () => {
     container.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000000);
+    // scene.background = new THREE.Color(0x000000);
 
     const camera = new THREE.PerspectiveCamera(
       30,
