@@ -1,11 +1,14 @@
-const CurvedCard = ({ children, color = "#fff" }) => (
+const CurvedCard = ({ children, color = "#fff", invert = false }) => (
   <div className="relative w-full flex flex-col items-center justify-center min-h-0 h-auto">
     <svg
       width="100%"
       height="100%"
       viewBox="0 0 1200 800"
       className="absolute inset-0"
-      style={{ zIndex: 0 }}
+      style={{
+        zIndex: 0,
+        transform: invert ? "scaleX(-1) scaleY(-1)" : undefined,
+      }}
       preserveAspectRatio="none"
     >
       <path

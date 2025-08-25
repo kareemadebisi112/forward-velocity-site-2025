@@ -3,7 +3,9 @@ import FoundersSection from "./components/FoundersSection";
 import FixSection from "./components/FixSection";
 import StepsSection from "./components/StepsSection";
 import CostSection from "./components/CostSection";
-import CurvedCard from "./components/mini/CurvedCard";
+import TestimonialsSection from "./components/TestimonialsSection";
+import NewsletterSection from "./components/NewsletterSection";
+import FooterSection from "./components/FooterSection";
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
       <FixSection />
       <StepsSection />
       <CostSection />
-      <CurvedCard /> 
+      <TestimonialsSection />
+      <NewsletterSection />
+      <FooterSection />
     </div>
   );
 }
