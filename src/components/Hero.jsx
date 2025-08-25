@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div className="relative w-full h-screen">
       <div className="absolute top-0 right-0 w-full h-full">
-        {/* <RotatingSolar /> */}
+        <RotatingSolar />
       </div>
 
       {/* Overlay for transparency */}
@@ -17,9 +17,9 @@ const Hero = () => {
         <Header />
 
         {/* Hero Content */}
-        <main className="flex flex-col w-full h-full justify-around px-12">
+        <main className="flex flex-col max-w-[1440px] justify-self-center w-full h-full justify-around">
           <div className=" self-start">
-            <h1 className="bg-gradient-to-r from-white to-gray-text bg-clip-text text-transparent text-5xl md:text-7xl font-bold leading-tight mb-6">
+            <h1 className="bg-gradient-to-r from-white to-dark-gray bg-clip-text text-transparent text-5xl md:text-7xl font-bold leading-tight mb-6">
               Your systems are
               <br />
               slowing you down.
@@ -35,7 +35,9 @@ const Hero = () => {
               and thrive in changing environments.
             </p>
 
-            <Button glow className="px-10 py-5 text-lg">See What's Broken</Button>
+            <Button glow className="px-10 py-5 text-lg">
+              See What's Broken
+            </Button>
           </div>
         </main>
       </div>

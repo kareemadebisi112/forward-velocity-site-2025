@@ -15,24 +15,31 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="flex items-center justify-between px-4 md:px-12 pt-6 md:pt-8 w-full z-10">
-      <div className="flex items-center gap-2">
-        <span className="text-white text-xl font-bold flex items-center gap-2">
-          <Logo size={36} />
-          Forward Velocity
-        </span>
+    <header className="flex justify-center relative px-4 md:px-12 pt-6 md:pt-8 w-full z-10">
+      <div className="max-w-[1440px] flex items-center justify-between w-full">
+        <div className="flex items-center gap-2">
+          <span className="text-white text-xl font-bold flex items-center gap-0">
+            <Logo size={36} />
+            Forward Velocity
+          </span>
+        </div>
+
+        <div className="flex items-center justify-between gap-8">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex gap-8 text-white text-base font-medium">
+            {navLinks.map((link) => (
+              <a key={link.label} href={link.href} className="hover:text-green">
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden md:block">
+            <Button>Start Now</Button>
+          </div>
+        </div>
       </div>
-      {/* Desktop Nav */}
-      <nav className="hidden md:flex gap-8 text-white text-base font-medium">
-        {navLinks.map((link) => (
-          <a key={link.label} href={link.href} className="hover:text-green">
-            {link.label}
-          </a>
-        ))}
-      </nav>
-      <div className="hidden md:block">
-        <Button>Start Now</Button>
-      </div>
+
       {/* Mobile Nav Toggle */}
       <button
         className="md:hidden text-white focus:outline-none z-20"
@@ -49,6 +56,7 @@ const Header = () => {
           />
         </svg>
       </button>
+
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center gap-8 md:hidden z-10">

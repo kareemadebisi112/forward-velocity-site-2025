@@ -18,12 +18,12 @@ const issues = [
 ];
 
 const FoundersSection = () => (
-  <section className="w-full flex flex-col items-center py-20 px-4 md:px-0">
+  <section className="w-full flex bg-transparent flex-col items-center py-20 px-4 md:px-0">
     {/* Headline */}
     <TextGradient
       as="h1"
       from="white"
-      to="gray-text"
+      to="dark-gray"
       direction="to-r"
       className="text-5xl md:text-7xl font-bold text-center mb-6"
     >
