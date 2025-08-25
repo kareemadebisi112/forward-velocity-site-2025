@@ -1,13 +1,25 @@
 @import "tailwindcss";
 @theme {
+  --font-clash: "Clash", sans-serif;
+
   --color-green: #159653;
   --color-light-green: #6FD287;
   --color-white: #FFFFFF;
   --color-gray-text: #999999;
   --color-gray-bg: #2B2B2B;
+  --color-dark-gray: #191919;
   /* --color-black: #141415; */
   --color-black-dark: #000000;
   --color-black-fade: #101010;
   --color-fade-green: #6A8C69;
   --color-fade-gray: #E7EBE7;
+  --color-gray-text-fade: #A0ACA1;
+}
+
+@font-face {
+  font-family: Clash;
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("../src/fonts/clash-display/fonts/fonnts.com-Clash_Display_Variable_Bold.ttf") format("truetype");
 }

@@ -5,18 +5,22 @@ const cards = [
   {
     title: "Custom Solutions",
     desc: "That Scale Ready to build something new? Once your foundation is solid, we create custom software that automates your processes, serves your customers better, and grows with your business. From internal tools to customer-facing platforms — built to your exact needs.",
+    icon: "/assets/vector_4.svg",
   },
   {
     title: "Systems & Integration",
     desc: "Your tools should talk to each other. We connect the dots between your CRM, website, forms, and internal systems — no more double work. Not technical? We'll walk you through everything in plain English.",
+    icon: "/assets/vector_5.svg",
   },
   {
     title: "Speed & Performance",
     desc: "Your site shouldn't make people wait. We optimize load times, fix clunky pages, and speed up the tech behind your customer experience. Most performance fixes take less than 10 days.",
+    icon: "/assets/vector_6.svg",
   },
   {
     title: "Cleanup & Fixes",
     desc: "Old dev work? We clean it up. Broken features, half-built tools, mysterious bugs — you bring it in, debug, and get it back on track. You'll get clear scopes and pricing before anything starts — and if you want to keep going, we're here for long-term support too.",
+    icon: "/assets/vector_7.svg",
   },
 ];
 
@@ -76,11 +80,7 @@ const FixSection = () => (
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="flex gap-5 flex-col">
-                  <img
-                    src="/assets/vector_4.svg"
-                    alt="icon"
-                    className="w-14 h-14"
-                  />
+                  <img src={card.icon} alt="icon" className="w-14 h-14" />
                   <span className="text-white text-xl font-bold">
                     {card.title}
                   </span>

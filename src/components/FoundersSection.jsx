@@ -1,5 +1,6 @@
 import React from "react";
 import TextGradient from "./mini/TextGradient";
+import CurvedCard from "./mini/CurvedCard";
 
 const issues = [
   {
@@ -42,48 +43,48 @@ const FoundersSection = () => (
       up.
     </div>
 
-    
     {/* Card */}
 
     <div
-      className="w-full max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl bg-white rounded-[2rem] shadow-xl flex flex-col md:flex-row p-8 md:p-14 gap-8 md:gap-0"
+      className="w-full max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl"
       style={{ borderRadius: "2rem 2rem 2rem 4rem" }}
     >
-      {/* Left */}
-      <div className="flex-1 flex flex-col justify-start">
-        <h2 className="text-black font-medium text-6xl mb-4">
-          The tech's not
-          <br />
-          working - and
-          <br />
-          you can feel it.
-        </h2>
-        <div className="text-gray-text text-sm mt-2">
-          These are the kinds of problems our clients come to us with:
-        </div>
-      </div>
-      {/* Right */}
-      <div className="flex-1 flex flex-col justify-between gap-3">
-        {issues.map((issue, idx) => (
-          <div
-            key={idx}
-            className={`${
-              idx !== 0 ? "border-t py-7 border-gray-text/20" : "pb-7"
-            } flex w-100 h-full items-center gap-8`}
-          >
-            <div className="flex w-[70px] h-[50px] p-4 rounded-lg bg-fade-gray">
-              <img
-                src={issue.icon}
-                alt="issue icon"
-                className="w-full h-full object-contain"
-              />
+      <CurvedCard>
+        <div className="flex flex-col lg:py-14 py-4 px-6 lg:px-20 md:flex-row gap-8 mb-9 md:mb-0 md:gap-0">
+          {/* Left */}
+          <div className="flex-1 flex flex-col justify-start">
+            <h2 className="text-black font-medium lg:text-6xl md:text-5xl text-4xl mb-4">
+              The tech's not working - and you can feel it.
+            </h2>
+            <div className="text-gray-text text-sm mt-2">
+              These are the kinds of problems our clients come to us with:
             </div>
-            <div className="text-black text-md font-normal">{issue.text}</div>
           </div>
-        ))}
-      </div>
+          {/* Right */}
+          <div className="flex-1 flex flex-col justify-between gap-3">
+            {issues.map((issue, idx) => (
+              <div
+                key={idx}
+                className={`$${
+                  idx !== 0 ? "border-t py-7 border-gray-text/20" : "pb-7"
+                } flex items-center gap-4 flex-wrap min-w-0`}
+              >
+                <div className="flex-shrink-0 w-[70px] h-[50px] p-4 rounded-lg bg-fade-gray">
+                  <img
+                    src={issue.icon}
+                    alt="issue icon"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex-1 min-w-0 text-black text-lg font-normal break-words whitespace-normal px-2 py-1  md:text-2xl">
+                  {issue.text}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </CurvedCard>
     </div>
-    
   </section>
 );
 

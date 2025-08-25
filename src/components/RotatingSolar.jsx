@@ -236,6 +236,7 @@ const RotatingSolar = () => {
     const blinkDuration = 0.3;
     const blinkInterval = 6.0;
 
+    let animationId;
     const tick = () => {
       t += 0.012;
       blinkTimer += 0.012;
@@ -270,7 +271,7 @@ const RotatingSolar = () => {
       compactDiskGroup.rotation.y += 0.0002;
       controls.update();
       renderer.render(scene, camera);
-      requestAnimationFrame(tick);
+      animationId = requestAnimationFrame(tick);
     };
     tick();
 
@@ -285,6 +286,17 @@ const RotatingSolar = () => {
     // Cleanup function: this runs when the component unmounts
     return () => {
       window.removeEventListener("resize", handleResize);
+      if (animationId) cancelAnimationFrame(animationId);
+      controls.dispose();
+      renderer.dispose();
+      // Dispose geometries/materials if needed:
+      dome.geometry.dispose();
+      dome.material.dispose();
+      innerGlow.geometry.dispose();
+      innerGlow.material.dispose();
+      compactDisk.geometry.dispose();
+      compactDisk.material.dispose();
+      // Remove canvas
       container.removeChild(renderer.domElement);
     };
   }, []); // Empty dependency array means this effect runs once on mount
