@@ -65,81 +65,85 @@ const CostSection = () => {
   const [open, setOpen] = useState(cards[0].title);
 
   return (
-    <section className="relative w-full overflow-hidden flex flex-col lg:flex-row items-stretch pt-10 px-4 md:px-0">
-      {/* Left: Headline, arrows, glow */}
-      <div className="flex-1 relative flex flex-col min-h-[50rem] px-2 md:px-12">
-        {/* Red torch glow */}
-        <div
-          className="absolute rotate-[20deg] bg-red-600 -left-60 top-50 w-[900px] h-[200px] pointer-events-none z-10"
-          style={{
-            filter: "blur(100px)",
-            opacity: 0.7,
-          }}
-        />
-        {/* Large arrow image, far left, receives red glow */}
-        <img
-          src="/assets/big_arrow.svg"
-          alt="Big Arrow"
-          className="absolute h-[600px] w-[300px] left-6 top-0 z-0"
-        />
-        {/* Small arrow image, to right of big arrow, receives red glow */}
-        <img
-          src="/assets/big_arrow.svg"
-          alt="Small Arrow"
-          className="absolute h-[300px] w-[150px] object-cover left-60 top-0 z-0"
-        />
 
-        <div className="z-20 ms-18 mt-50 pt-0">
-          <h2 className="text-white text-6xl w-full md:w-92 md:text-5xl font-medium mb-4">
-            It's costing you more than you think.
-          </h2>
-          <div className="text-gray-text text-base max-w-md">
-            Founders come to us with slow tools, manual workarounds, and tech
-            that just can't keep up. The kicker? It's bleeding more time and
-            money than they realized.
+    <section className="relative w-full overflow-hidden flex justify-center items-stretch pt-10 px-4 md:px-0">
+      <div className="relative max-w-[1440px] flex flex-col lg:flex-row">
+        {/* Left: Headline, arrows, glow */}
+        <div className="flex-1 flex flex-col min-h-[50rem] px-2 md:px-12">
+          {/* Red torch glow */}
+          <div
+            className="absolute rotate-[20deg] bg-red-600 -left-60 top-50 w-[900px] h-[200px] pointer-events-none z-10"
+            style={{
+              filter: "blur(100px)",
+              opacity: 0.7,
+            }}
+          />
+          {/* Large arrow image, far left, receives red glow */}
+          <img
+            src="/assets/big_arrow.svg"
+            alt="Big Arrow"
+            className="absolute h-[600px] w-[300px] left-6 top-0 z-0"
+          />
+          {/* Small arrow image, to right of big arrow, receives red glow */}
+          <img
+            src="/assets/big_arrow.svg"
+            alt="Small Arrow"
+            className="absolute h-[300px] w-[150px] object-cover left-60 top-0 z-0"
+          />
+
+          <div className="z-20 ms-18 mt-50 pt-0">
+            <h2 className="text-white text-6xl w-full md:w-92 md:text-5xl font-medium mb-4">
+              It's costing you more than you think.
+            </h2>
+            <div className="text-gray-text text-base max-w-md">
+              Founders come to us with slow tools, manual workarounds, and tech
+              that just can't keep up. The kicker? It's bleeding more time and
+              money than they realized.
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Right: Toggleable cards */}
-      <div className="flex-1 flex flex-col gap-1 justify-center items-center px-2 md:px-8">
-        {cards.map((card, idx) => (
-          <div
-            key={idx}
-            className={`rounded-xl w-full max-w-2xl shadow-lg p-10 transition-all bg-dark-gray ${
-              open === card.title ? "" : "opacity-60"
-            }`}
-            onClick={() => setOpen(open === card.title ? null : card.title)}
-          >
-            <button
-              className="w-full flex justify-between items-center text-white text-2xl font-bold mb-6"
+        {/* Right: Toggleable cards */}
+        <div className="flex-1 flex flex-col gap-1 justify-center items-center px-2 md:px-8">
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className={`rounded-xl w-full max-w-2xl shadow-lg p-10 transition-all bg-dark-gray ${
+                open === card.title ? "" : "opacity-60"
+              }`}
               onClick={() => setOpen(open === card.title ? null : card.title)}
             >
-              <span>{card.title}</span>
-              {open === card.title ? downIcon() : upIcon()}
-            </button>
+              <button
+                className="w-full flex justify-between items-center text-white text-2xl font-bold mb-6"
+                onClick={() => setOpen(open === card.title ? null : card.title)}
+              >
+                <span>{card.title}</span>
+                {open === card.title ? downIcon() : upIcon()}
+              </button>
 
-            {open === card.title && (
-              <ul className="flex flex-col max-w-xl gap-4">
-                {card.content.map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-center gap-4 text-gray-text text-lg"
-                  >
-                    <img
-                      src="/assets/vector_8.svg"
-                      alt="dot"
-                      className="w-7 h-7"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+              {open === card.title && (
+                <ul className="flex flex-col max-w-xl gap-4">
+                  {card.content.map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-center gap-4 text-gray-text text-lg"
+                    >
+                      <img
+                        src="/assets/vector_8.svg"
+                        alt="dot"
+                        className="w-7 h-7"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
+    
   );
 };
 

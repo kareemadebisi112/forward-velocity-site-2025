@@ -19,7 +19,7 @@ const steps = [
 const StepsSection = () => (
   <section className="w-full flex flex-col items-center pt-20 px-4 md:px-8">
     <div
-      className="w-full bg-white rounded-[2rem] shadow-xl flex flex-col items-center p-8 md:p-14"
+      className="max-w-[1440px] bg-white rounded-[2rem] shadow-xl flex flex-col items-center p-8 md:p-14"
       style={{ borderRadius: "2rem" }}
     >
       <h2 className="text-black text-4xl md:text-5xl w-96 font-bold text-center mb-2">
