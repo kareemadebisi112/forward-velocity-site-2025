@@ -46,7 +46,7 @@ const FoundersSection = () => (
     {/* Card */}
 
     <div
-      className="w-full max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl"
+      className="w-full max-w-2xl mt-10 md:max-w-3xl lg:max-w-5xl xl:max-w-7xl"
       style={{ borderRadius: "2rem 2rem 2rem 4rem" }}
     >
       <CurvedCard>
@@ -56,7 +56,7 @@ const FoundersSection = () => (
             <h2 className="text-black font-medium lg:text-6xl md:text-5xl text-4xl mb-4">
               The tech's not working - and you can feel it.
             </h2>
-            <div className="text-gray-text text-sm mt-2">
+            <div className="text-dark-gray text-sm mt-2">
               These are the kinds of problems our clients come to us with:
             </div>
           </div>
@@ -66,7 +66,7 @@ const FoundersSection = () => (
               <div
                 key={idx}
                 className={`$${
-                  idx !== 0 ? "border-t py-7 border-gray-text/20" : "pb-7"
+                  idx !== 0 ? "border-t pt-10 border-gray-text/20" : "pb-10"
                 } flex items-center gap-4 flex-wrap min-w-0`}
               >
                 <div className="flex-shrink-0 w-[70px] h-[50px] p-4 rounded-lg bg-fade-gray">

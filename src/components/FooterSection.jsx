@@ -5,7 +5,16 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const FooterSection = () => (
   <footer className="w-full relative pt-16 px-4 md:px-16">
-    <div className="max-w-7xl mx-auto animate-fadein">
+    <div
+      className="absolute left-1/2 bottom-0 w-[90vw] max-w-7xl h-[250px] pointer-events-none -translate-x-1/2 animate-cloudglow"
+      style={{
+        background:
+          "radial-gradient(ellipse at center, #159653cc 0%, #6FD28788 60%, transparent 100%)",
+        filter: "blur(100px)",
+        opacity: 1,
+      }}
+    />
+    <div className="max-w-7xl relative mx-auto animate-fadein">
       <div className="flex flex-col md:flex-row items-center justify-between pb-10 ">
         <div className="mb-6 md:mb-0">
           <h2 className="text-white font-semibold text-2xl mb-2">
@@ -31,7 +40,6 @@ const FooterSection = () => (
 
       <div className="flex bg-black rounded-t-[2rem] flex-col justify-between min-h-[250px] p-8 animate-slideup">
         <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:justify-between md:items-center">
-          {/* Logo */}
           <div className="flex items-center gap-3 mb-4 md:mb-0 justify-center">
             <Logo size={32} className="mr-2 animate-pop" />
             <span className="text-white font-bold text-xl">
@@ -39,7 +47,6 @@ const FooterSection = () => (
             </span>
           </div>
 
-          {/* Navigations */}
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-white text-base mb-4 md:mb-0 justify-center">
             {[
               "Home",
@@ -63,7 +70,7 @@ const FooterSection = () => (
 
         <div className="flex flex-col items-center gap-4 mt-6 md:flex-row md:justify-between md:items-center">
           <div className="text-gray-text-fade text-center md:text-left">
-            © 2025 your awesome website. All rights reserved.
+            © {new Date().getFullYear()} Forward Velocity. All rights reserved.
           </div>
           <div className="flex gap-2 justify-center md:justify-end">
             <a
@@ -88,15 +95,6 @@ const FooterSection = () => (
         </div>
       </div>
     </div>
-    {/* Animations CSS */}
-    <style>{`
-      .animate-fadein { animation: fadein 1s ease; }
-      @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
-      .animate-slideup { animation: slideup 1s 0.2s ease backwards; }
-      @keyframes slideup { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-      .animate-pop { animation: pop 0.7s 0.3s cubic-bezier(.17,.67,.83,.67) backwards; }
-      @keyframes pop { 0% { transform: scale(0.7); opacity: 0; } 80% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-    `}</style>
   </footer>
 );
 

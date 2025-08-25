@@ -23,3 +23,33 @@
   font-display: swap;
   src: url("../src/fonts/clash-display/fonts/fonnts.com-Clash_Display_Variable_Bold.ttf") format("truetype");
 }
+
+.animate-fadein { animation: fadein 1s ease; }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+.animate-slideup { animation: slideup 1s 0.2s ease backwards; }
+@keyframes slideup { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.animate-pop { animation: pop 0.7s 0.3s cubic-bezier(.17,.67,.83,.67) backwards; }
+@keyframes pop { 0% { transform: scale(0.7); opacity: 0; } 80% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+
+
+.animate-cloudglow {
+  animation: cloudglow 7s linear infinite alternate;
+}
+@keyframes cloudglow {
+  0% {
+    filter: blur(100px);
+    opacity: 1;
+  }
+  30% {
+    filter: blur(110px);
+    opacity: 0.95;
+  }
+  60% {
+    filter: blur(120px);
+    opacity: 0.92;
+  }
+  100% {
+    filter: blur(100px);
+    opacity: 1;
+  }
+}

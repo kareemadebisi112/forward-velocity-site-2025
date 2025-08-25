@@ -30,20 +30,20 @@ const FixSection = () => (
     <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
       {/* Top right green glow */}
       <div
-        className="absolute top-0 right-0 w-2/5 h-2/5"
+        className="absolute animate-cloudglow top-0 right-0 w-2/5 h-2/5"
         style={{
           background: "radial-gradient(circle, #15965366 0%, transparent 70%)",
-          filter: "blur(80px)",
-          opacity: 0.7,
+          filter: "blur(90px)",
+          opacity: 0.9,
         }}
       />
       {/* Bottom left green glow */}
       <div
-        className="absolute bottom-0 left-0 w-2/5 h-2/5"
+        className="absolute animate-cloudglow bottom-0 left-0 w-2/5 h-2/5"
         style={{
           background: "radial-gradient(circle, #6FD28766 0%, transparent 70%)",
-          filter: "blur(80px)",
-          opacity: 0.7,
+          filter: "blur(90px)",
+          opacity: 0.9,
         }}
       />
     </div>

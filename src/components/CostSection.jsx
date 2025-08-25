@@ -72,9 +72,9 @@ const CostSection = () => {
         <div className="flex-1 flex flex-col min-h-[50rem] px-2 md:px-12">
           {/* Red torch glow */}
           <div
-            className="absolute rotate-[20deg] bg-red-600 -left-60 top-50 w-[900px] h-[200px] pointer-events-none z-10"
+            className="absolute animate-cloudglow rotate-[20deg] bg-red-600 -left-60 top-50 w-[900px] h-[200px] pointer-events-none z-10"
             style={{
-              filter: "blur(100px)",
+              filter: "blur(50px)",
               opacity: 0.7,
             }}
           />

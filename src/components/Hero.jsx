@@ -6,19 +6,22 @@ import Button from "./mini/Button";
 const Hero = () => {
   return (
     <div className="relative w-full h-screen">
-      <div className="absolute top-0 right-0 w-full h-full">
-        <RotatingSolar />
+      <div className="absolute top-0 right-0 w-full h-full z-0">
+        {/* <RotatingSolar /> */}
       </div>
 
       {/* Overlay for transparency */}
-      <div className="absolute inset-0 w-full h-full" />
-      <div className="absolute inset-0 h-full w-full pointer-events-none">
-        {/* Top Navigation */}
-        <Header />
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none" />
 
-        {/* Hero Content */}
-        <main className="flex flex-col max-w-[1440px] justify-self-center w-full h-full justify-around">
-          <div className=" self-start">
+      {/* Top Navigation - ensure it's above overlays */}
+      <div className="absolute top-0 left-0 w-full z-20">
+        <Header />
+      </div>
+
+      {/* Hero Content */}
+      <div className="absolute inset-0 h-full w-full z-10 flex flex-col max-w-[1440px] justify-self-center justify-evenly">
+        <main className="flex flex-col w-full h-full justify-center">
+          <div className="self-start">
             <h1 className="bg-gradient-to-r from-white to-dark-gray bg-clip-text text-transparent text-5xl md:text-7xl font-bold leading-tight mb-6">
               Your systems are
               <br />

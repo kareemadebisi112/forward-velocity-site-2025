@@ -16,6 +16,9 @@ const Header = () => {
 
   return (
     <header className="flex justify-center relative px-4 md:px-12 pt-6 md:pt-8 w-full z-10">
+      {/* Blur bg */}
+      <div className="absolute top-0 inset-0 z-0 bg-black/30 backdrop-blur-none" />
+
       <div className="max-w-[1440px] flex items-center justify-between w-full">
         <div className="flex items-center gap-2">
           <span className="text-white text-xl font-bold flex items-center gap-0">
@@ -27,9 +30,14 @@ const Header = () => {
         <div className="flex items-center justify-between gap-8">
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-8 text-white text-base font-medium">
-            {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="hover:text-green">
+            {navLinks.map((link, idx) => (
+              <a
+                key={idx}
+                href={link.href}
+                className="hover:text-green-400 transition-colors duration-300 relative group"
+              >
                 {link.label}
+                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </a>
             ))}
           </nav>
@@ -68,6 +76,7 @@ const Header = () => {
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
+              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </a>
           ))}
           <Button className="w-3/4 text-lg py-3">Start Now</Button>
