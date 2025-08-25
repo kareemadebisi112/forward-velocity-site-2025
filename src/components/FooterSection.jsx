@@ -1,16 +1,17 @@
 import React from "react";
 import Button from "./mini/Button";
 import Logo from "./mini/Logo";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const FooterSection = () => (
-  <footer className="w-full bg-black pt-16 pb-8 px-4 md:px-16">
-    <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row items-center justify-between pb-10 border-b border-gray-800">
+  <footer className="w-full relative pt-16 px-4 md:px-16">
+    <div className="max-w-7xl mx-auto animate-fadein">
+      <div className="flex flex-col md:flex-row items-center justify-between pb-10 ">
         <div className="mb-6 md:mb-0">
           <h2 className="text-white font-semibold text-2xl mb-2">
             Stay sharp.
           </h2>
-          <p className="text-gray-text text-base mb-4 max-w-md">
+          <p className="text-gray-text text-base mb-4 max-w-2xl">
             Join our list for occasional insights on fixing broken systems,
             streamlining operations, and using tech to move faster -- whether
             you're starting out or scaling up.
@@ -20,63 +21,82 @@ const FooterSection = () => (
           <input
             type="email"
             placeholder="Enter your email"
-            className="px-4 py-2 rounded-lg bg-[#181C1B] text-white border-none outline-none w-48 md:w-64"
+            className="px-6 py-4 rounded-lg bg-black/50 text-white border-none outline-none w-48 md:w-64 transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:bg-black/70"
           />
-          <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-2">
+          <Button className="bg-green-500 text-black font-semibold px-6 py-2 transition-all duration-300">
             Subscribe
           </Button>
         </form>
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-between pt-8">
-        <div className="flex items-center gap-3 mb-4 md:mb-0">
-          <Logo size={32} className="mr-2" />
-          <span className="text-white font-bold text-lg">Forward Velocity</span>
+
+      <div className="flex bg-black rounded-t-[2rem] flex-col justify-between min-h-[250px] p-8 animate-slideup">
+        <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:justify-between md:items-center">
+          {/* Logo */}
+          <div className="flex items-center gap-3 mb-4 md:mb-0 justify-center">
+            <Logo size={32} className="mr-2 animate-pop" />
+            <span className="text-white font-bold text-xl">
+              Forward Velocity
+            </span>
+          </div>
+
+          {/* Navigations */}
+          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-white text-base mb-4 md:mb-0 justify-center">
+            {[
+              "Home",
+              "Services",
+              "Industries",
+              "How It Works",
+              "Contact",
+              "Testimonials",
+            ].map((nav, idx) => (
+              <a
+                key={nav}
+                href="#"
+                className="hover:text-green-400 transition-colors duration-300 relative group"
+              >
+                {nav}
+                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-green-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              </a>
+            ))}
+          </nav>
         </div>
-        <nav className="flex gap-6 text-gray-400 text-base mb-4 md:mb-0">
-          <a href="#" className="hover:text-white">
-            Home
-          </a>
-          <a href="#" className="hover:text-white">
-            Services
-          </a>
-          <a href="#" className="hover:text-white">
-            Industries
-          </a>
-          <a href="#" className="hover:text-white">
-            How It Works
-          </a>
-          <a href="#" className="hover:text-white">
-            Contact
-          </a>
-          <a href="#" className="hover:text-white">
-            Testimonials
-          </a>
-        </nav>
-        <div className="flex gap-4">
-          <a
-            href="#"
-            className="bg-green-600 rounded-full w-8 h-8 flex items-center justify-center text-white"
-          >
-            <i className="fab fa-facebook-f" />
-          </a>
-          <a
-            href="#"
-            className="bg-black rounded-full w-8 h-8 flex items-center justify-center text-white border border-gray-700"
-          >
-            <i className="fab fa-instagram" />
-          </a>
-          <a
-            href="#"
-            className="bg-black rounded-full w-8 h-8 flex items-center justify-center text-white border border-gray-700"
-          >
-            <i className="fab fa-linkedin-in" />
-          </a>
+
+        <div className="flex flex-col items-center gap-4 mt-6 md:flex-row md:justify-between md:items-center">
+          <div className="text-gray-text-fade text-center md:text-left">
+            © 2025 your awesome website. All rights reserved.
+          </div>
+          <div className="flex gap-2 justify-center md:justify-end">
+            <a
+              href="#"
+              className="bg-green-600 rounded-full w-8 h-8 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 hover:bg-green-500 shadow-lg"
+            >
+              <FaFacebookF className="transition-transform duration-300 group-hover:rotate-[15deg]" />
+            </a>
+            <a
+              href="#"
+              className="bg-black rounded-full w-8 h-8 flex items-center justify-center text-white border border-gray-700 transition-all duration-300 hover:scale-110 hover:bg-gray-900 shadow-lg"
+            >
+              <FaInstagram className="transition-transform duration-300 group-hover:rotate-[15deg]" />
+            </a>
+            <a
+              href="#"
+              className="bg-black rounded-full w-8 h-8 flex items-center justify-center text-white border border-gray-700 transition-all duration-300 hover:scale-110 hover:bg-gray-900 shadow-lg"
+            >
+              <FaLinkedinIn className="transition-transform duration-300 group-hover:rotate-[15deg]" />
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="text-gray-600 text-xs text-center pt-8">
-        © 2025 your awesome website. All rights reserved.
       </div>
     </div>
+    {/* Animations CSS */}
+    <style>{`
+      .animate-fadein { animation: fadein 1s ease; }
+      @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+      .animate-slideup { animation: slideup 1s 0.2s ease backwards; }
+      @keyframes slideup { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      .animate-pop { animation: pop 0.7s 0.3s cubic-bezier(.17,.67,.83,.67) backwards; }
+      @keyframes pop { 0% { transform: scale(0.7); opacity: 0; } 80% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+    `}</style>
   </footer>
 );
 

@@ -12,7 +12,7 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => (
-  <section className="w-full flex flex-col items-center py-0 px-4 md:px-0 bg-black">
+  <section className="w-full flex flex-col items-center py-0 px-4 md:px-0">
     <div className="max-w-7xl">
       <CurvedCard color="#E7EBE7" invert>
         <div className="w-full mx-auto flex flex-col items-center md:justify-center md:flex-row gap-8 p-0 md:p-8">
