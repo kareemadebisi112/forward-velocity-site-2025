@@ -2,6 +2,7 @@ import React from "react";
 import RotatingSolar from "./RotatingSolar";
 import Header from "./Header";
 import Button from "./mini/Button";
+import { motion } from "motion/react";
 
 const Hero = () => {
   return (
@@ -21,27 +22,55 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="absolute inset-0 h-full w-full z-10 flex flex-col max-w-[1440px] justify-self-center justify-evenly">
         <main className="flex flex-col w-full h-full justify-center">
-          <div className="self-start">
-            <h1 className="bg-gradient-to-r from-white to-dark-gray bg-clip-text text-transparent text-5xl md:text-7xl font-bold leading-tight mb-6">
+          <motion.div
+            className="self-start"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h1
+              className="bg-gradient-to-r from-white to-dark-gray bg-clip-text text-transparent text-5xl md:text-7xl font-bold leading-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            >
               Your systems are
               <br />
               slowing you down.
               <br />
               Let's fix that.
-            </h1>
-          </div>
+            </motion.h1>
+          </motion.div>
 
-          <div className="flex self-end flex-col items-start gap-8">
-            <p className="text-xl max-w-lg mb-6 md:mb-0 bg-gradient-to-r from-white to-gray-text bg-clip-text text-transparent">
-              In today’s rapidly evolving world, innovation and adaptation are
+          <motion.div
+            className="flex self-end flex-col items-start gap-8"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          >
+            <motion.p
+              className="text-xl max-w-lg mb-6 md:mb-0 bg-gradient-to-r from-white to-gray-text bg-clip-text text-transparent"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              In today's rapidly evolving world, innovation and adaptation are
               key. Leveraging new trends and tools helps businesses stay ahead
               and thrive in changing environments.
-            </p>
+            </motion.p>
 
-            <Button glow className="px-10 py-5 text-lg">
-              See What's Broken
-            </Button>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button glow className="px-10 py-5 text-lg">
+                See What's Broken
+              </Button>
+            </motion.div>
+          </motion.div>
         </main>
       </div>
     </div>

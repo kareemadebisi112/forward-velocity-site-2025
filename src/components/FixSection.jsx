@@ -1,5 +1,6 @@
 import React from "react";
 import TextGradient from "./mini/TextGradient";
+import { motion } from "motion/react";
 
 const cards = [
   {
@@ -29,30 +30,63 @@ const FixSection = () => (
     {/* Glowing background */}
     <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
       {/* Top right green glow */}
-      <div
+      <motion.div
         className="absolute animate-cloudglow top-0 right-0 w-2/5 h-2/5"
         style={{
           background: "radial-gradient(circle, #15965366 0%, transparent 70%)",
           filter: "blur(90px)",
           opacity: 0.9,
         }}
+        animate={{
+          scale: [1, 0.9, 1],
+          opacity: [0.9, 0.7, 0.9],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
       />
       {/* Bottom left green glow */}
-      <div
+      <motion.div
         className="absolute animate-cloudglow bottom-0 left-0 w-2/5 h-2/5"
         style={{
           background: "radial-gradient(circle, #6FD28766 0%, transparent 70%)",
           filter: "blur(90px)",
           opacity: 0.9,
         }}
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.9, 0.7, 0.9],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+          delay: 2,
+        }}
       />
     </div>
 
     <div className="relative z-10 flex flex-col justify-center items-center">
       {/* Cards grid */}
-      <div className="max-w-7xl">
+      <motion.div
+        className="max-w-7xl"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-6 gap-8 w-full">
-          <div className="col-span-6 md:col-span-3">
+          <motion.div
+            className="col-span-6 md:col-span-3"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
             <TextGradient
               as="h2"
               from="white"
@@ -65,34 +99,72 @@ const FixSection = () => (
               slowing you <span className="text-gray-text">down.</span>
             </TextGradient>
             {/* Subtext */}
-            <div className="max-w-xl text-gray-text text-base mb-8">
+            <motion.div
+              className="max-w-xl text-gray-text text-base mb-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               From speed to systems (and even new builds down the line), we
-              handle your tech headaches, so you don’t have to.
-            </div>
-          </div>
+              handle your tech headaches, so you don't have to.
+            </motion.div>
+          </motion.div>
 
           {cards.map((card, idx) => (
-            <div
+            <motion.div
               key={idx}
               className={`${
                 idx === 0 ? "md:col-span-3" : "md:col-span-2"
               } col-span-6 bg-black-dark p-5 rounded-lg`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2 + idx * 0.15 }}
+              whileHover={{
+                y: -5,
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2)",
+              }}
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="flex gap-5 flex-col">
-                  <img src={card.icon} alt="icon" className="w-14 h-14" />
-                  <span className="text-white text-xl font-bold">
+                  <motion.img
+                    src={card.icon}
+                    alt="icon"
+                    className="w-14 h-14"
+                    initial={{ scale: 0.8 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      delay: 0.3 + idx * 0.15,
+                    }}
+                  />
+                  <motion.span
+                    className="text-white text-xl font-bold"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.4 + idx * 0.15 }}
+                  >
                     {card.title}
-                  </span>
+                  </motion.span>
                 </div>
               </div>
-              <div className="text-gray-text text-base font-normal">
+              <motion.div
+                className="text-gray-text text-base font-normal"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 + idx * 0.15 }}
+              >
                 {card.desc}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   </section>
 );

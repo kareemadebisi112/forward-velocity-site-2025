@@ -35,6 +35,10 @@
 .animate-cloudglow {
   animation: cloudglow 7s linear infinite alternate;
 }
+
+body {
+  @apply bg-black-fade text-white;
+}
 @keyframes cloudglow {
   0% {
     filter: blur(100px);

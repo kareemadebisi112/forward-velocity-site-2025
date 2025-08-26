@@ -1,5 +1,6 @@
 import React from "react";
 import CurvedCard from "./mini/CurvedCard";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -18,37 +19,95 @@ const steps = [
 
 const StepsSection = () => (
   <section className="w-full flex flex-col items-center pt-20 px-4 md:px-8">
-    <div
+    <motion.div
       className="max-w-[1440px] bg-white rounded-[2rem] shadow-xl flex flex-col items-center p-8 md:p-14"
       style={{ borderRadius: "2rem" }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{
+        duration: 0.8,
+        ease: "easeOut",
+      }}
+      whileHover={{
+        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+      }}
     >
-      <h2 className="text-black text-4xl md:text-5xl w-96 font-bold text-center mb-2">
+      <motion.h2
+        className="text-black text-4xl md:text-5xl w-96 font-bold text-center mb-2"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+      >
         Getting started is easy.
-      </h2>
-      <div className="text-gray-text text-base text-center mb-10">
+      </motion.h2>
+      <motion.div
+        className="text-gray-text text-base text-center mb-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
         We'll walk you through it.
-      </div>
+      </motion.div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {steps.map((step, idx) => (
-          <CurvedCard color="#E7EBE7" key={idx}>
-            <div className="relativerounded-2xl p-8 flex flex-col justify-between min-h-[250px]">
-              <div>
-                <div className="text-black font-medium text-lg mb-4">
-                  {step.title}
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.5,
+              delay: 0.4 + idx * 0.2,
+              type: "spring",
+              stiffness: 100,
+            }}
+            whileHover={{ y: -10 }}
+          >
+            <CurvedCard color="#E7EBE7">
+              <div className="relativerounded-2xl p-8 flex flex-col justify-between min-h-[250px]">
+                <div>
+                  <motion.div
+                    className="text-black font-medium text-lg mb-4"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.5 + idx * 0.2 }}
+                  >
+                    {step.title}
+                  </motion.div>
+                  <motion.div
+                    className="text-gray-text-fade text-base font-normal"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.6 + idx * 0.2 }}
+                  >
+                    {step.desc}
+                  </motion.div>
                 </div>
-                <div className="text-gray-text-fade text-base font-normal">
-                  {step.desc}
-                </div>
+                {/* Step number */}
+                <motion.div
+                  className="absolute bottom-0 right-0 font-clash text-black text-6xl font-bold px-6 pb-2"
+                  initial={{ scale: 0.7, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    delay: 0.7 + idx * 0.2,
+                  }}
+                >
+                  {idx + 1}
+                </motion.div>
               </div>
-              {/* Step number */}
-              <div className="absolute bottom-0 right-0 font-clash text-black text-6xl font-bold px-6 pb-2">
-                {idx + 1}
-              </div>
-            </div>
-          </CurvedCard>
+            </CurvedCard>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   </section>
 );
 

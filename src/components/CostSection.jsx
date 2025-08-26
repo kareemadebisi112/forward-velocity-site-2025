@@ -65,7 +65,6 @@ const CostSection = () => {
   const [open, setOpen] = useState(cards[0].title);
 
   return (
-
     <section className="relative w-full overflow-hidden flex justify-center items-stretch pt-10 px-4 md:px-0">
       <div className="relative max-w-[1440px] flex flex-col lg:flex-row">
         {/* Left: Headline, arrows, glow */}
@@ -108,7 +107,7 @@ const CostSection = () => {
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className={`rounded-xl w-full max-w-2xl shadow-lg p-10 transition-all bg-dark-gray ${
+              className={`rounded-xl w-full md:w-2xl shadow-lg p-10 transition-all bg-dark-gray ${
                 open === card.title ? "" : "opacity-60"
               }`}
               onClick={() => setOpen(open === card.title ? null : card.title)}
@@ -143,7 +142,6 @@ const CostSection = () => {
         </div>
       </div>
     </section>
-    
   );
 };
 

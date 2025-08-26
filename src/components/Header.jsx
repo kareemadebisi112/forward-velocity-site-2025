@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className="flex justify-center relative px-4 md:px-12 pt-6 md:pt-8 w-full z-10">
       {/* Blur bg */}
-      <div className="absolute top-0 inset-0 z-0 bg-black/30 backdrop-blur-none" />
+      <div className="absolute top-0 inset-0 pointer-events-none bg-black/30 backdrop-blur-none" />
 
       <div className="max-w-[1440px] flex items-center justify-between w-full">
         <div className="flex items-center gap-2">
