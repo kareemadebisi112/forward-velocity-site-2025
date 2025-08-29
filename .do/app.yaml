@@ -1,16 +1,13 @@
 name: forward-velocity-site-2025
-services:
+static_sites:
 - name: web
   source_dir: /
   github:
     repo: kareemadebisi112/forward-velocity-site-2025
     branch: main
     deploy_on_push: true
-  run_command: npm start
-  environment_slug: node-js
-  instance_count: 1
-  instance_size_slug: basic-xxs
-  build_command: npm ci && npm run build
+  build_command: npm install && npm run build
+  output_dir: dist
   routes:
   - path: /
   envs:
