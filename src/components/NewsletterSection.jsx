@@ -43,10 +43,10 @@ const NewsletterSection = () => (
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div whileHover={{ scale: 1.05, transition: { duration: 0.4, delay: 0 } }} whileTap={{ scale: 0.95 }}>
             <Button>See What's Broken</Button>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div whileHover={{ scale: 1.05, transition: { duration: 0.4, delay: 0 } }} whileTap={{ scale: 0.95 }}>
             <Button>Have questions? Let's talk.</Button>
           </motion.div>
         </motion.div>

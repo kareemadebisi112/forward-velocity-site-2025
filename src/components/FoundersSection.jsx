@@ -1,5 +1,4 @@
 import React from "react";
-import TextGradient from "./mini/TextGradient";
 import CurvedCard from "./mini/CurvedCard";
 import { motion } from "motion/react";
 
@@ -27,17 +26,13 @@ const FoundersSection = () => (
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
     >
-      <TextGradient
-        as="h1"
-        from="white"
-        to="dark-gray"
-        direction="to-r"
-        className="text-5xl md:text-7xl font-bold text-center mb-6"
+      <h1
+        className="text-white text-5xl md:text-7xl font-bold text-center mb-6"
       >
         Built for founders
         <br />
         and small teams
-      </TextGradient>
+      </h1>
     </motion.div>
 
     {/* Supporting text */}
@@ -103,7 +98,7 @@ const FoundersSection = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 + idx * 0.2 }}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.4, delay: 0 } }}
               >
                 <motion.div
                   className="flex-shrink-0 w-[70px] h-[50px] p-4 rounded-lg bg-fade-gray"

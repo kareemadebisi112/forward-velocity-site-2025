@@ -215,13 +215,14 @@ const CostSection = () => {
               whileHover={{
                 scale: 1.02,
                 boxShadow: "0px 10px 25px rgba(0,0,0,0.2)",
+                transition: { duration: 0.4, delay: 0 }
               }}
               whileTap={{ scale: 0.98 }}
             >
               <motion.button
                 className="w-full flex justify-between items-center text-white text-2xl font-bold mb-6"
                 onClick={() => setOpen(open === card.title ? null : card.title)}
-                whileHover={{ color: "#6FD287" }}
+                whileHover={{ color: "#6FD287", transition: { duration: 0.4, delay: 0 } }}
               >
                 <span>{card.title}</span>
                 {open === card.title ? downIcon() : upIcon()}

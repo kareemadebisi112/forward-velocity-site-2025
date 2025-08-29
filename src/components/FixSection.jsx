@@ -1,5 +1,4 @@
 import React from "react";
-import TextGradient from "./mini/TextGradient";
 import { motion } from "motion/react";
 
 const cards = [
@@ -87,17 +86,13 @@ const FixSection = () => (
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <TextGradient
-              as="h2"
-              from="white"
-              to="gray-text"
-              direction="to-r"
-              className="text-4xl md:text-6xl font-bold mb-4"
+            <h2
+              className="text-white text-4xl md:text-6xl font-bold mb-4"
             >
               We fix what's
               <br />
               slowing you <span className="text-gray-text">down.</span>
-            </TextGradient>
+            </h2>
             {/* Subtext */}
             <motion.div
               className="max-w-xl text-gray-text text-base mb-8"
@@ -120,10 +115,11 @@ const FixSection = () => (
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: 0.2 + idx * 0.15 }}
+              transition={{ duration: 0.4, delay: 0 }}
               whileHover={{
                 y: -5,
                 boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2)",
+                transition: { duration: 0.4, delay: 0 }
               }}
             >
               <div className="flex items-center gap-4 mb-4">

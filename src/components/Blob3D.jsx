@@ -20,6 +20,10 @@ const Blob3D = ({ size = 340 }) => {
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    
+    // Performance optimizations
+    renderer.info.autoReset = false;
+    renderer.sortObjects = false;
     container.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
@@ -45,13 +49,18 @@ const Blob3D = ({ size = 340 }) => {
     const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
     keyLight.position.set(-5, 8, 5);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.width = 2048;
-    keyLight.shadow.mapSize.height = 2048;
+    keyLight.shadow.mapSize.width = 1024;
+    keyLight.shadow.mapSize.height = 1024;
     scene.add(keyLight);
 
     const fillLight = new THREE.DirectionalLight(0xffffff, 0.6);
     fillLight.position.set(5, 3, 3);
     // scene.add(fillLight);
+
+    // Rim light from behind
+    const rimLight = new THREE.DirectionalLight(0x35ffa1, 0.8);
+    rimLight.position.set(0, 2, -5);
+    scene.add(rimLight);
 
     // Blob group
     const blobGroup = new THREE.Group();
@@ -77,7 +86,7 @@ const Blob3D = ({ size = 340 }) => {
     });
 
     const blob = new THREE.Mesh(
-      new THREE.SphereGeometry(1.2, 128, 128),
+      new THREE.SphereGeometry(1.2, 64, 64),
       blobMat
     );
     blob.position.y = 0;
@@ -95,15 +104,31 @@ const Blob3D = ({ size = 340 }) => {
       side: THREE.FrontSide,
     });
     const innerGlow = new THREE.Mesh(
-      new THREE.SphereGeometry(1.15, 64, 64),
+      new THREE.SphereGeometry(1.15, 32, 32),
       innerGlowMat
     );
     innerGlow.position.copy(blob.position);
     blobGroup.add(innerGlow);
 
+    // Green glow rim
+    const rimMat = new THREE.MeshBasicMaterial({
+      color: 0x4ade80,
+      transparent: true,
+      opacity: 0.5,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      side: THREE.BackSide,
+    });
+    const rim = new THREE.Mesh(
+      new THREE.SphereGeometry(1.25, 32, 32),
+      rimMat
+    );
+    rim.position.copy(blob.position);
+    blobGroup.add(rim);
+
     // Eyes
     function makeEye(x) {
-      const geo = new THREE.CapsuleGeometry(0.08, 0.25, 4, 32);
+      const geo = new THREE.CapsuleGeometry(0.08, 0.25, 3, 16);
       const mat = new THREE.MeshBasicMaterial({
         color: 0xffffff,
         transparent: false,
@@ -140,9 +165,52 @@ const Blob3D = ({ size = 340 }) => {
     let blinkDuration = 0.3;
     let blinkInterval = 6.0;
     let animationId;
+    let frameCount = 0;
+    
+    // Mouse tracking variables
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetRotationX = -0.2300000000000001;
+    let targetRotationY = -0.3500000000000001;
+    let currentRotationX = targetRotationX;
+    let currentRotationY = targetRotationY;
+    
+    // Mouse move handler
+    const handleMouseMove = (event) => {
+      const rect = container.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      // Normalize mouse position (-1 to 1)
+      mouseX = ((event.clientX - centerX) / (rect.width / 2));
+      mouseY = ((event.clientY - centerY) / (rect.height / 2));
+      
+      // Convert to rotation values with limits
+      const maxRotation = 0.3;
+      targetRotationY = -0.3500000000000001 + (mouseX * maxRotation);
+      targetRotationX = -0.2300000000000001 + (mouseY * maxRotation * 0.5);
+    };
+    
+    // Add mouse event listeners
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseenter', handleMouseMove);
+    
+    // Reset to default position when mouse leaves
+    const handleMouseLeave = () => {
+      targetRotationX = -0.2300000000000001;
+      targetRotationY = -0.3500000000000001;
+    };
+    container.addEventListener('mouseleave', handleMouseLeave);
+    
     const tick = () => {
-      t += 0.012;
-      blinkTimer += 0.012;
+      frameCount++;
+      
+      // Reduce animation frequency for non-critical updates
+      if (frameCount % 2 === 0) {
+        t += 0.012;
+        blinkTimer += 0.012;
+      }
+      
       if (blinkTimer >= blinkInterval && !isBlinking) {
         isBlinking = true;
         blinkTimer = 0;
@@ -160,9 +228,21 @@ const Blob3D = ({ size = 340 }) => {
           blinkTimer = 0;
         }
       }
-      blobGroup.position.y = Math.sin(t * 0.8) * 0.03;
-      innerGlow.material.opacity = 0.15 + 0.08 * Math.sin(t * 2.0);
-      blobGroup.rotation.y = Math.sin(t * 0.3) * 0.1;
+      
+      // Update animations only on specific frames to reduce calculations
+      if (frameCount % 2 === 0) {
+        blobGroup.position.y = Math.sin(t * 0.8) * 0.03;
+        innerGlow.material.opacity = 0.15 + 0.08 * Math.sin(t * 2.0);
+        rim.material.opacity = 0.2 + 0.05 * Math.sin(t * 1.5);
+      }
+      
+      // Smooth interpolation for mouse following
+      const lerpSpeed = 0.05;
+      currentRotationX += (targetRotationX - currentRotationX) * lerpSpeed;
+      currentRotationY += (targetRotationY - currentRotationY) * lerpSpeed;
+      
+      blobGroup.rotation.y = currentRotationY;
+      blobGroup.rotation.x = currentRotationX;
       controls.update();
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(tick);
@@ -180,7 +260,11 @@ const Blob3D = ({ size = 340 }) => {
 
     // Cleanup
     return () => {
-      window.removeEventListener("resize", handleResize);
+      // Remove mouse event listeners
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseenter', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+      
       if (animationId) cancelAnimationFrame(animationId);
       controls.dispose();
       renderer.dispose();
@@ -188,6 +272,8 @@ const Blob3D = ({ size = 340 }) => {
       blob.material.dispose();
       innerGlow.geometry.dispose();
       innerGlow.material.dispose();
+      rim.geometry.dispose();
+      rim.material.dispose();
       container.removeChild(renderer.domElement);
     };
   }, []);

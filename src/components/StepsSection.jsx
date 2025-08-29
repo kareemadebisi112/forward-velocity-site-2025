@@ -31,6 +31,7 @@ const StepsSection = () => (
       }}
       whileHover={{
         boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+        transition: { duration: 0.4, delay: 0 }
       }}
     >
       <motion.h2
@@ -60,11 +61,11 @@ const StepsSection = () => (
             viewport={{ once: true }}
             transition={{
               duration: 0.5,
-              delay: 0.4 + idx * 0.2,
+              delay: 0,
               type: "spring",
               stiffness: 100,
             }}
-            whileHover={{ y: -10 }}
+            whileHover={{ y: -10, transition: { duration: 0.4, delay: 0 } }}
           >
             <CurvedCard color="#E7EBE7">
               <div className="relativerounded-2xl p-8 flex flex-col justify-between min-h-[250px]">

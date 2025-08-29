@@ -123,7 +123,7 @@ const TestimonialsSection = () => {
                 viewport={{ once: true }}
               >
                 <motion.button
-                  whileHover={{ scale: 1.1, backgroundColor: "#e6ffe6" }}
+                  whileHover={{ scale: 1.1, backgroundColor: "#e6ffe6", transition: { duration: 0.4, delay: 0 } }}
                   whileTap={{ scale: 0.95 }}
                   className={`w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md transition-all duration-300`}
                   onClick={handlePrev}
@@ -133,7 +133,7 @@ const TestimonialsSection = () => {
                   <FaArrowLeft className="text-black text-xl" />
                 </motion.button>
                 <motion.button
-                  whileHover={{ scale: 1.1, backgroundColor: "#10b981" }}
+                  whileHover={{ scale: 1.1, backgroundColor: "#10b981", transition: { duration: 0.4, delay: 0 } }}
                   whileTap={{ scale: 0.95 }}
                   className={`w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-md transition-all duration-300`}
                   onClick={handleNext}
@@ -156,7 +156,7 @@ const TestimonialsSection = () => {
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 1 + idx * 0.1 }}
-                    whileHover={{ scale: 1.2 }}
+                    whileHover={{ scale: 1.2, transition: { duration: 0.4, delay: 0 } }}
                     className={`w-3 h-3 rounded-full transition-all duration-300 border-2 ${
                       current === idx
                         ? "bg-green-500 border-green-500 scale-125"

@@ -124,7 +124,7 @@ const FooterSection = () => {
               variants={itemVariants}
             />
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.4, delay: 0 } }}
               whileTap={{ scale: 0.95 }}
               variants={itemVariants}
             >
@@ -200,14 +200,14 @@ const FooterSection = () => {
                   href="#"
                   className="hover:text-green-400 transition-colors duration-300 relative group"
                   variants={navItemVariants}
-                  whileHover={{ y: -2 }}
+                  whileHover={{ y: -2, transition: { duration: 0.4, delay: 0 } }}
                 >
                   {nav}
                   <motion.span
                     className="absolute left-0 -bottom-1 w-full h-[2px] bg-green-400 origin-left"
                     initial={{ scaleX: 0 }}
                     whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4, delay: 0 }}
                   />
                 </motion.a>
               ))}

@@ -23,6 +23,10 @@ const RotatingSolar = () => {
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    
+    // Performance optimizations
+    renderer.info.autoReset = false;
+    renderer.sortObjects = false;
     // Append the renderer's canvas to the container ref
     container.appendChild(renderer.domElement);
 
@@ -54,8 +58,8 @@ const RotatingSolar = () => {
     const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
     keyLight.position.set(-5, 8, 5);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.width = 2048;
-    keyLight.shadow.mapSize.height = 2048;
+    keyLight.shadow.mapSize.width = 1024;
+    keyLight.shadow.mapSize.height = 1024;
     scene.add(keyLight);
 
     const fillLight = new THREE.DirectionalLight(0xffffff, 0.6);
@@ -102,7 +106,7 @@ const RotatingSolar = () => {
     });
 
     const dome = new THREE.Mesh(
-      new THREE.SphereGeometry(0.7, 128, 128),
+      new THREE.SphereGeometry(0.7, 64, 64),
       domeMat
     );
     dome.position.y = 0.5;
@@ -123,17 +127,33 @@ const RotatingSolar = () => {
       side: THREE.FrontSide,
     });
     const innerGlow = new THREE.Mesh(
-      new THREE.SphereGeometry(0.67, 64, 64),
+      new THREE.SphereGeometry(0.67, 32, 32),
       innerGlowMat
     );
     innerGlow.position.copy(dome.position);
     domeGroup.add(innerGlow);
 
+    // Green glow rim (similar to Blob3D)
+    const rimMat = new THREE.MeshBasicMaterial({
+      color: 0x4ade80,
+      transparent: true,
+      opacity: 0.4,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      side: THREE.BackSide,
+    });
+    const rim = new THREE.Mesh(
+      new THREE.SphereGeometry(0.72, 32, 32),
+      rimMat
+    );
+    rim.position.copy(dome.position);
+    domeGroup.add(rim);
+
     // === Compact Disk and Orbits Group ===
     const compactDiskGroup = new THREE.Group();
     mainGroup.add(compactDiskGroup);
 
-    const diskGeo = new THREE.RingGeometry(1.4, 4.6, 128);
+    const diskGeo = new THREE.RingGeometry(1.4, 4.6, 64);
     const diskMat = new THREE.MeshStandardMaterial({
       color: 0x111111,
       metalness: 0.9,
@@ -160,7 +180,7 @@ const RotatingSolar = () => {
     const numRings = 20;
     for (let i = 1; i <= numRings; i++) {
       const ringRadius = 1.0 + i * 0.4;
-      const ringGeo = new THREE.TorusGeometry(ringRadius, 0.02, 16, 100);
+      const ringGeo = new THREE.TorusGeometry(ringRadius, 0.02, 8, 50);
       const ring = new THREE.Mesh(ringGeo, metallicRingMat);
       ring.rotation.x = -Math.PI / 2;
       ring.position.y = 0.01;
@@ -172,7 +192,7 @@ const RotatingSolar = () => {
     compactDiskGroup.add(glowingSpheresGroup);
 
     function addGlowingSphere(radius, angle, sphereSize = 0.08) {
-      const sphereGeo = new THREE.SphereGeometry(sphereSize, 32, 32);
+      const sphereGeo = new THREE.SphereGeometry(sphereSize, 16, 16);
       const sphereMat = new THREE.MeshStandardMaterial({
         color: 0x4ade80,
         emissive: 0x2a9d5d,
@@ -213,7 +233,7 @@ const RotatingSolar = () => {
     domeGroup.add(eyesGroup);
 
     function makeEye(x) {
-      const geo = new THREE.CapsuleGeometry(0.08, 0.25, 4, 32);
+      const geo = new THREE.CapsuleGeometry(0.08, 0.25, 3, 16);
       const mat = new THREE.MeshBasicMaterial({ color: 0xffffff });
       const m = new THREE.Mesh(geo, mat);
       m.position.set(x, 0.6, 0.75);
@@ -235,11 +255,17 @@ const RotatingSolar = () => {
     let isBlinking = false;
     const blinkDuration = 0.3;
     const blinkInterval = 6.0;
+    let frameCount = 0;
 
     let animationId;
     const tick = () => {
-      t += 0.012;
-      blinkTimer += 0.012;
+      frameCount++;
+      
+      // Reduce animation frequency for non-critical updates
+      if (frameCount % 2 === 0) {
+        t += 0.012;
+        blinkTimer += 0.012;
+      }
 
       if (blinkTimer >= blinkInterval && !isBlinking) {
         isBlinking = true;
@@ -260,9 +286,15 @@ const RotatingSolar = () => {
         }
       }
 
-      innerGlow.material.opacity = 0.15 + 0.08 * Math.sin(t * 2.0);
-      innerPointLight.intensity = 0.8 + 0.4 * Math.sin(t * 2.0);
-      domeGroup.rotation.y = Math.sin(t * 0.3) * 0.1;
+      // Update animations only on specific frames to reduce calculations
+      if (frameCount % 2 === 0) {
+        innerGlow.material.opacity = 0.15 + 0.08 * Math.sin(t * 2.0);
+        innerPointLight.intensity = 0.8 + 0.4 * Math.sin(t * 2.0);
+        domeGroup.rotation.y = Math.sin(t * 0.3) * 0.1;
+        
+        // Subtle rim opacity pulse (similar to Blob3D)
+        rim.material.opacity = 0.15 + 0.03 * Math.sin(t * 1.5);
+      }
       if (domeOnlyLights) {
         domeOnlyLights.position.copy(mainGroup.position);
         domeOnlyLights.rotation.copy(mainGroup.rotation);
@@ -294,6 +326,8 @@ const RotatingSolar = () => {
       dome.material.dispose();
       innerGlow.geometry.dispose();
       innerGlow.material.dispose();
+      rim.geometry.dispose();
+      rim.material.dispose();
       compactDisk.geometry.dispose();
       compactDisk.material.dispose();
       // Remove canvas
