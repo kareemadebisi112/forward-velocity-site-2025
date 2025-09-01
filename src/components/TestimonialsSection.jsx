@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CurvedCard from "./mini/CurvedCard";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { motion } from "motion/react";
 
 const testimonials = [
   {
@@ -58,106 +57,52 @@ const TestimonialsSection = () => {
 
   return (
     <section className="w-full flex flex-col items-center py-0 px-4 md:px-0">
-      <motion.div
-        className="max-w-7xl"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.2 }}
-      >
+      <div className="max-w-7xl">
         <CurvedCard color="#E7EBE7" invert>
           <div className="w-full mx-auto flex flex-col items-center md:justify-center md:flex-row gap-8 p-0 md:p-8">
             {/* Left: Headline & Navigation */}
-            <motion.div
-              className="flex-1 flex flex-col h-full justify-between p-10"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
+            <div className="flex-1 flex flex-col h-full justify-between p-10">
               <div>
-                <motion.div
-                  className="text-black text-md mt-4"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  viewport={{ once: true }}
-                >
+                <div className="text-black text-md mt-4">
                   5.0 Based on 256 Reviews
-                </motion.div>
-                <motion.div
-                  className="flex gap-1 mb-4"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
+                </div>
+                <div className="flex gap-1 mb-4">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <motion.span
+                    <span
                       key={i}
                       className="text-red-500 text-lg"
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ duration: 0.3, delay: 0.6 + i * 0.1 }}
-                      viewport={{ once: true }}
                     >
                       ★
-                    </motion.span>
+                    </span>
                   ))}
-                </motion.div>
-                <motion.h2
-                  className="text-black text-4xl md:text-5xl font-bold mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                  viewport={{ once: true }}
-                >
+                </div>
+                <h2 className="text-black text-4xl md:text-5xl font-bold mb-8">
                   Here's what our clients say after we step in.
-                </motion.h2>
+                </h2>
               </div>
-              <motion.div
-                className="flex gap-4 mt-8"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.1, backgroundColor: "#e6ffe6", transition: { duration: 0.4, delay: 0 } }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md transition-all duration-300`}
+              <div className="flex gap-4 mt-8">
+                <button
+                  className={`w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 hover:bg-green-100`}
                   onClick={handlePrev}
                   aria-label="Previous testimonial"
                   disabled={animating}
                 >
                   <FaArrowLeft className="text-black text-xl" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.1, backgroundColor: "#10b981", transition: { duration: 0.4, delay: 0 } }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-md transition-all duration-300`}
+                </button>
+                <button
+                  className={`w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 hover:bg-green-600`}
                   onClick={handleNext}
                   aria-label="Next testimonial"
                   disabled={animating}
                 >
                   <FaArrowRight className="text-white text-xl" />
-                </motion.button>
-              </motion.div>
-              <motion.div
-                className="flex gap-2 mt-6 justify-center"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-                viewport={{ once: true }}
-              >
+                </button>
+              </div>
+              <div className="flex gap-2 mt-6 justify-center">
                 {testimonials.map((_, idx) => (
-                  <motion.button
+                  <button
                     key={idx}
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.3, delay: 1 + idx * 0.1 }}
-                    whileHover={{ scale: 1.2, transition: { duration: 0.4, delay: 0 } }}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 border-2 ${
+                    className={`w-3 h-3 rounded-full transition-all duration-300 border-2 hover:scale-125 ${
                       current === idx
                         ? "bg-green-500 border-green-500 scale-125"
                         : "bg-gray-300 border-gray-300"
@@ -166,8 +111,8 @@ const TestimonialsSection = () => {
                     aria-label={`Go to testimonial ${idx + 1}`}
                   />
                 ))}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Right: Testimonial Card */}
             <div
@@ -218,7 +163,7 @@ const TestimonialsSection = () => {
             </div>
           </div>
         </CurvedCard>
-      </motion.div>
+      </div>
     </section>
   );
 };

@@ -2,66 +2,11 @@ import React from "react";
 import Button from "./mini/Button";
 import Logo from "./mini/Logo";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { motion } from "framer-motion";
 
 const FooterSection = () => {
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-      },
-    },
-  };
-
-  const navItemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  };
-
-  const socialIconVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-      },
-    },
-    hover: {
-      scale: 1.2,
-      rotate: 15,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-  };
-
   return (
     <footer className="w-full relative pt-16 px-4 md:px-16">
-      <motion.div
+      <div
         className="absolute left-1/2 bottom-0 w-[90vw] max-w-7xl h-[250px] pointer-events-none -translate-x-1/2"
         style={{
           background:
@@ -69,197 +14,99 @@ const FooterSection = () => {
           filter: "blur(100px)",
           opacity: 1,
         }}
-        animate={{
-          // scale: [1, 0.9, 1],
-          opacity: [1, 0.9, 1],
-        }}
-        transition={{
-          duration: 8,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
       />
 
-      <motion.div
-        className="max-w-7xl relative mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-      >
-        <motion.div
-          className="flex flex-col md:flex-row items-center justify-between pb-10"
-          variants={containerVariants}
-        >
-          <motion.div className="mb-6 md:mb-0" variants={itemVariants}>
-            <motion.h2
-              className="text-white font-semibold text-2xl mb-2"
-              variants={itemVariants}
-            >
+      <div className="max-w-7xl relative mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between pb-10">
+          <div className="mb-6 md:mb-0">
+            <h2 className="text-white font-semibold text-2xl mb-2">
               Stay sharp.
-            </motion.h2>
-            <motion.p
-              className="text-gray-text text-base mb-4 max-w-2xl"
-              variants={itemVariants}
-            >
-              Join our list for occasional insights on fixing broken systems,
-              streamlining operations, and using tech to move faster -- whether
-              you're starting out or scaling up.
-            </motion.p>
-          </motion.div>
+            </h2>
+            <p className="text-gray-text text-base mb-4 max-w-2xl">
+              Occasional insights on making your systems work for you, not against you.
+            </p>
+            <small className="text-gray-400">Unsubscribe any time.</small>
+          </div>
 
-          <motion.form
-            className="flex gap-2 items-center w-full md:w-auto"
-            variants={itemVariants}
-          >
-            <motion.input
+          <form className="flex gap-2 items-center w-full md:w-auto">
+            <input
               type="email"
               placeholder="Enter your email"
-              className="px-6 py-4 rounded-lg bg-black/50 text-white border-none outline-none w-48 md:w-64 transition-all duration-300"
-              whileFocus={{
-                boxShadow: "0 0 0 2px rgb(34 197 94)",
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
-              }}
-              variants={itemVariants}
+              className="px-6 py-4 rounded-lg bg-black/50 text-white border-none outline-none w-48 md:w-64 transition-all duration-300 focus:shadow-[0_0_0_2px_rgb(34_197_94)] focus:bg-black/70"
             />
-            <motion.div
-              whileHover={{ scale: 1.05, transition: { duration: 0.4, delay: 0 } }}
-              whileTap={{ scale: 0.95 }}
-              variants={itemVariants}
-            >
+            <div className="hover:scale-105 active:scale-95 transition-transform duration-300">
               <Button className="bg-green-500 text-black font-semibold px-6 py-2">
                 Subscribe
               </Button>
-            </motion.div>
-          </motion.form>
-        </motion.div>
+            </div>
+          </form>
+        </div>
 
-        <motion.div
-          className="flex bg-black rounded-t-[2rem] flex-col justify-between min-h-[250px] p-8"
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-            delay: 0.2,
-          }}
-        >
+        <div className="flex bg-black rounded-t-[2rem] flex-col justify-around min-h-[250px] p-8">
           <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:justify-between md:items-center">
-            <motion.div
-              className="flex items-center gap-3 mb-4 md:mb-0 justify-center"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                  delay: 0.5,
-                }}
-              >
+            <div className="flex items-center gap-3 mb-4 md:mb-0 justify-center">
+              <div>
                 <Logo size={32} className="mr-2" />
-              </motion.div>
-              <motion.span
-                className="text-white font-bold text-xl"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
+              </div>
+              <span className="text-white font-bold text-xl">
                 Forward Velocity
-              </motion.span>
-            </motion.div>
+              </span>
+            </div>
 
-            <motion.nav
-              className="flex flex-wrap gap-x-6 gap-y-2 text-white text-base mb-4 md:mb-0 justify-center"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delayChildren: 0.7, staggerChildren: 0.1 }}
-            >
+            <nav className="flex flex-wrap gap-x-6 gap-y-2 text-white text-base mb-4 md:mb-0 justify-center">
               {[
-                "Home",
-                "Services",
-                "Industries",
-                "How It Works",
-                "Contact",
-                "Testimonials",
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" }, 
+                { label: "Projects", href: "#" },
+                { label: "Contact", href: "/contact" },
+                { label: "Blog", href: "/blog" },
+                { label: "Resources", href: "/resources" }
               ].map((nav, idx) => (
-                <motion.a
-                  key={nav}
-                  href="#"
-                  className="hover:text-green-400 transition-colors duration-300 relative group"
-                  variants={navItemVariants}
-                  whileHover={{ y: -2, transition: { duration: 0.4, delay: 0 } }}
+                <a
+                  key={nav.label}
+                  href={nav.href}
+                  className="hover:text-green-400 transition-colors duration-300 relative group hover:-translate-y-0.5"
                 >
-                  {nav}
-                  <motion.span
-                    className="absolute left-0 -bottom-1 w-full h-[2px] bg-green-400 origin-left"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.4, delay: 0 }}
-                  />
-                </motion.a>
+                  {nav.label}
+                  <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-green-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </a>
               ))}
-            </motion.nav>
+            </nav>
           </div>
 
-          <motion.div
-            className="flex flex-col items-center gap-4 mt-6 md:flex-row md:justify-between md:items-center"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div
-              className="text-gray-text-fade text-center md:text-left"
-              variants={itemVariants}
-            >
+          <div className="flex flex-col items-center gap-4 mt-6 md:flex-row md:justify-between md:items-center">
+            <div className="text-gray-text-fade text-center md:text-left">
               © {new Date().getFullYear()} Forward Velocity. All rights
               reserved.
-            </motion.div>
-            <motion.div
-              className="flex gap-2 justify-center md:justify-end"
-              variants={containerVariants}
-            >
+            </div>
+            <div className="flex gap-2 justify-center md:justify-end">
               {[
-                { icon: FaFacebookF, className: "bg-green-600" },
+                { icon: FaLinkedinIn, className: "bg-green-600", href: "https://www.linkedin.com/company/forward-velocity" },
                 {
                   icon: FaInstagram,
                   className: "bg-black border border-gray-700",
+                  href: "https://www.instagram.com/forwardvelocityllc/",
                 },
                 {
-                  icon: FaLinkedinIn,
+                  icon: FaFacebookF,
                   className: "bg-black border border-gray-700",
+                  href: "#",
                 },
               ].map((social, index) => (
-                <motion.a
+                <a
                   key={index}
-                  href="#"
-                  className={`${social.className} rounded-full w-8 h-8 flex items-center justify-center text-white shadow-lg`}
-                  variants={socialIconVariants}
-                  whileHover="hover"
-                  transition={{
-                    delay: 0.9 + index * 0.1,
-                  }}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${social.className} rounded-full w-8 h-8 flex items-center justify-center text-white shadow-lg hover:scale-110 hover:rotate-12 transition-transform duration-300`}
                 >
                   <social.icon />
-                </motion.a>
+                </a>
               ))}
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };

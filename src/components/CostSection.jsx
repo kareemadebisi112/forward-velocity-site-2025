@@ -2,26 +2,24 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const hiddenCost = [
-  "Slow sites lose 7% of customers for every extra second of load time",
-  "Manual workarounds waste 2-3 hours per team member, every week",
-  "Poor integrations mean you're paying for tools that aren't even syncing",
-  "Tech debt compounds. A $2k fix now becomes a $10K rebuild later",
+  "7% more customers leave for each extra second of load time",
+  "Manual workarounds waste 2-3 hours per person, every week",
+  "That $2K fix becomes a $10K rebuild if you wait",
 ];
 
 const roi = [
-  "Faster sites increase conversion and retention",
+  "Teams save hours every week",
   "Automated processes save hours every week",
-  "Integrated tools reduce wasted spend",
-  "Fixing tech debt early saves thousands later",
+  "You stop bleeding money on broken systems",
 ];
 
 const cards = [
   {
-    title: "The Hidden Cost",
+    title: "Every Second Counts",
     content: hiddenCost,
   },
   {
-    title: "The Real ROI of Fixing This",
+    title: "After We Fix It",
     content: roi,
   },
 ];
@@ -77,8 +75,8 @@ const CostSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
+        delayChildren: 0.1,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -90,7 +88,8 @@ const CostSection = () => {
       y: 0,
       transition: {
         type: "spring",
-        stiffness: 100,
+        stiffness: 150,
+        damping: 15,
       },
     },
   };
@@ -102,8 +101,8 @@ const CostSection = () => {
       x: 0,
       transition: {
         type: "spring",
-        stiffness: 70,
-        damping: 10,
+        stiffness: 120,
+        damping: 12,
       },
     },
   };
@@ -114,7 +113,7 @@ const CostSection = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.7 }}
+      transition={{ duration: 0.4 }}
     >
       <div className="relative max-w-[1440px] flex flex-col lg:flex-row">
         {/* Left: Headline, arrows, glow */}
@@ -185,14 +184,14 @@ const CostSection = () => {
             >
               It's costing you more than you think.
             </motion.h2>
-            <motion.div
+            {/* <motion.div
               className="text-gray-text text-base max-w-md"
               variants={itemVariants}
             >
               Founders come to us with slow tools, manual workarounds, and tech
               that just can't keep up. The kicker? It's bleeding more time and
               money than they realized.
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </motion.div>
 
@@ -207,7 +206,7 @@ const CostSection = () => {
           {cards.map((card, idx) => (
             <motion.div
               key={idx}
-              className={`rounded-xl w-full md:w-2xl shadow-lg p-10 transition-all bg-dark-gray ${
+              className={`rounded-xl w-full md:w-2xl shadow-lg p-10 transition-all bg-black ${
                 open === card.title ? "" : "opacity-60"
               }`}
               onClick={() => setOpen(open === card.title ? null : card.title)}
