@@ -25,21 +25,23 @@ const FooterSection = () => {
             <p className="text-gray-text text-base mb-4 max-w-2xl">
               Occasional insights on making your systems work for you, not against you.
             </p>
-            <small className="text-gray-400">Unsubscribe any time.</small>
           </div>
 
-          <form className="flex gap-2 items-center w-full md:w-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="px-6 py-4 rounded-lg bg-black/50 text-white border-none outline-none w-48 md:w-64 transition-all duration-300 focus:shadow-[0_0_0_2px_rgb(34_197_94)] focus:bg-black/70"
-            />
-            <div className="hover:scale-105 active:scale-95 transition-transform duration-300">
-              <Button className="bg-green-500 text-black font-semibold px-6 py-2">
-                Subscribe
-              </Button>
-            </div>
-          </form>
+          <div className="flex flex-col items-center w-full md:w-auto">
+            <form className="flex gap-2 items-center w-full md:w-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="px-6 py-4 rounded-lg bg-black/50 text-white border-none outline-none w-48 md:w-64 transition-all duration-300 focus:shadow-[0_0_0_2px_rgb(34_197_94)] focus:bg-black/70"
+              />
+              <div className="hover:scale-105 active:scale-95 transition-transform duration-300">
+                <Button className="bg-green-500 text-black font-semibold px-6 py-2">
+                  Subscribe
+                </Button>
+              </div>
+            </form>
+            <small className="text-gray-400 mt-2">Unsubscribe any time.</small>
+          </div>
         </div>
 
         <div className="flex bg-black rounded-t-[2rem] flex-col justify-around min-h-[250px] p-8">
