@@ -197,7 +197,7 @@ const CostSection = () => {
 
         {/* Right: Toggleable cards */}
         <motion.div
-          className="flex-1 flex flex-col gap-1 justify-center items-center px-2 md:px-8"
+          className="flex-1 flex flex-col gap-1 justify-center items-center px-2 md:px-8 mb-20"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

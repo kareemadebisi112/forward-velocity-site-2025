@@ -63,8 +63,8 @@ const TestimonialsSection = () => {
             {/* Left: Headline & Navigation */}
             <div className="flex-1 flex flex-col h-full justify-between p-10">
               <div>
-                <div className="text-black text-md mt-4">
-                  5.0 Based on 256 Reviews
+                <div className="text-black text-md mt-12">
+                  5.0 Based on 115 Reviews
                 </div>
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: 5 }).map((_, i) => (

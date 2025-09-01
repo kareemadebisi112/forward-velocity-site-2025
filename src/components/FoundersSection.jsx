@@ -46,7 +46,7 @@ const FoundersSection = () => (
       style={{ borderRadius: "2rem 2rem 2rem 4rem" }}
     >
       <CurvedCard>
-        <div className="flex flex-col lg:py-14 py-4 px-6 lg:px-20 md:flex-row gap-8 mb-9 md:mb-0 md:gap-0">
+        <div className="flex flex-col lg:py-14 py-4 px-6 lg:px-20 md:flex-row gap-8 mb-12 md:mb-0 md:gap-0">
           {/* Left */}
           <div className="flex-1 flex flex-col justify-start">
             <h2 className="text-black font-medium lg:text-6xl md:text-5xl text-4xl mb-4">
