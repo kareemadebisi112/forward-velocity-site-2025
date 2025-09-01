@@ -1,16 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RotatingSolar from "./RotatingSolar";
+import { OptimizedRotatingSolar } from "./Optimized3D";
 import Header from "./Header";
 import Button from "./mini/Button";
 import SecondaryButton from "./mini/SecondaryButton";
 import { motion } from "framer-motion";
+import { useReducedMotion, getOptimizedAnimationProps } from "../hooks/useReducedMotion";
 
 const Hero = () => {
+  const shouldReduceMotion = useReducedMotion();
+  
+  const heroContentProps = getOptimizedAnimationProps(shouldReduceMotion, {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: "easeOut" }
+  });
+
   return (
     <div className="relative w-full h-screen">
       <div className="absolute top-0 right-0 w-full h-full z-0">
-        <RotatingSolar />
+        <OptimizedRotatingSolar />
       </div>
 
       {/* Overlay for transparency */}
@@ -24,9 +33,7 @@ const Hero = () => {
       {/* Hero Content */}
       <motion.div
         className="absolute inset-0 h-full w-full z-10 flex flex-col max-w-[1440px] justify-self-center justify-evenly"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        {...heroContentProps}
       >
         <main className="flex flex-col w-full h-full justify-center">
           <div className="self-start">

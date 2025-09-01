@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Archivo:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .animate-fadein { animation: fadein 1s ease; }
 @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
 .animate-slideup { animation: slideup 1s 0.2s ease backwards; }
