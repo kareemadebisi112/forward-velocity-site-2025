@@ -48,7 +48,7 @@ const Hero = () => {
 
           <div className="flex self-end flex-col items-start gap-8">
             <p className="text-xl max-w-lg mb-6 md:mb-0 text-white ">
-            We fix what's broken so you can grow.
+              We fix what's broken so you can grow. Expert web development, performance optimization, and system integrations.
             </p>
 
             <div className="flex gap-4">

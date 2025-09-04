@@ -1,10 +1,32 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { prerender } from 'vite-plugin-prerender'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(), 
+    tailwindcss(),
+    // Add prerendering for SEO
+    prerender({
+      routes: [
+        '/',
+        '/services',
+        '/contact', 
+        '/start',
+        '/tools',
+        '/blog'
+      ],
+      postProcess(renderedRoute) {
+        // Clean up the HTML if needed
+        renderedRoute.html = renderedRoute.html
+          .replace(/<script (.*?)>/gi, '<script $1>')
+          .replace('id="app"', 'id="root"')
+        return renderedRoute
+      }
+    })
+  ],
   base: './', // Use relative paths for assets
   build: {
     outDir: 'dist',

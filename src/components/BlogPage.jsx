@@ -193,9 +193,7 @@ const BlogPage = () => {
       <section className="pt-24 pb-16 px-4 md:px-16">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <TextGradient>
               Insights & Ideas
-            </TextGradient>
           </h1>
           <p className="text-gray-text text-lg md:text-xl max-w-3xl mx-auto mb-8">
             Discover actionable insights on streamlining operations, leveraging technology, 

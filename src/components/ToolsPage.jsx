@@ -219,9 +219,7 @@ const ToolsPage = () => {
       <section className="pt-24 pb-16 px-4 md:px-16">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <TextGradient>
               Essential Tools
-            </TextGradient>
           </h1>
           <p className="text-gray-text text-lg md:text-xl max-w-3xl mx-auto mb-8">
             Curated collection of tools to analyze, optimize, and improve your website's performance, 
