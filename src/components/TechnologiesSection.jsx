@@ -107,7 +107,7 @@ const TechnologiesSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Technologies We Master
+            We work with your existing stack
           </motion.h2>
           <motion.p
             className="text-gray-600 text-lg max-w-3xl mx-auto"
@@ -116,8 +116,7 @@ const TechnologiesSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            From modern frameworks to enterprise platforms, we speak the language of your existing tools 
-            and know exactly how to make them work better together.
+            From modern frameworks to legacy systems—if you use it, we know how to fix it and make it faster.
           </motion.p>
         </motion.div>
 
@@ -191,9 +190,9 @@ const TechnologiesSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <p className="text-gray-600 text-base">
-            Don't see your tech stack? <span className="font-semibold text-black">We work with 100+ technologies.</span>
+            Don't see yours? <span className="font-semibold text-black">We work with 100+ technologies.</span>
             <br />
-            <span className="text-sm">If you use it, we probably know it — and if we don't, we'll learn it fast.</span>
+            <span className="text-sm">If we don't know it, we'll learn it fast.</span>
           </p>
         </motion.div>
         </motion.div>

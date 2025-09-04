@@ -40,8 +40,7 @@ const VideoRotatingSolar = () => {
         }}
         onError={() => setVideoError(true)}
       >
-        <source src="/assets/solar-animation.webm" type="video/webm" />
-        <source src="/assets/solar-animation.mp4" type="video/mp4" />
+        <source src="https://velocity.sfo3.cdn.digitaloceanspaces.com/Forward%20Velocity%20Site/Videos/solar-animation.webm" type="video/webm" />
       </video>
     </div>
   );

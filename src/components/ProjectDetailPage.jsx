@@ -4,101 +4,11 @@ import Header from "./Header";
 import FooterSection from "./FooterSection";
 import { motion } from "motion/react";
 import Button from "./mini/Button";
-
-// Mock project data - replace with your actual data
-const projectsData = [
-  {
-    id: 1,
-    title: "E-Commerce Platform Revolution",
-    description: "A comprehensive e-commerce solution built with React, Node.js, and MongoDB. Features include real-time inventory management, advanced analytics, and seamless payment integration.",
-    fullDescription: "This e-commerce platform represents a complete overhaul of traditional online shopping experiences. Built from the ground up with modern technologies, it delivers exceptional performance, scalability, and user experience. The platform handles everything from product catalog management to complex order processing, payment integration, and real-time analytics.",
-    category: "Full Stack",
-    tags: ["Full Stack", "E-commerce"],
-    image: "/api/placeholder/800/400",
-    liveUrl: "https://demo-ecommerce.com",
-    githubUrl: "https://github.com/youruser/ecommerce-platform",
-    featured: true,
-    completedDate: "2024-12-15",
-    duration: "6 months",
-    teamSize: "4 developers",
-    status: "Completed",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS", "Redis", "Docker", "Nginx"],
-    challenges: [
-      "Implementing real-time inventory synchronization across multiple warehouses",
-      "Building a scalable payment system supporting multiple currencies",
-      "Creating an intuitive admin dashboard for complex product management"
-    ],
-    solutions: [
-      "Developed a microservices architecture with event-driven communication",
-      "Integrated multiple payment gateways with fallback mechanisms",
-      "Built a custom CMS with drag-and-drop interface for product management"
-    ],
-    results: [
-      "Increased conversion rate by 35%",
-      "Reduced page load times by 50%",
-      "Achieved 99.9% uptime with auto-scaling infrastructure",
-      "Successfully handles 10,000+ concurrent users"
-    ]
-  },
-  {
-    id: 2,
-    title: "AI-Powered Analytics Dashboard",
-    description: "Advanced analytics platform using machine learning to provide predictive insights for business growth. Real-time data visualization and automated reporting capabilities.",
-    fullDescription: "This sophisticated analytics platform transforms raw business data into actionable insights using cutting-edge machine learning algorithms. The dashboard provides real-time visualization, predictive analytics, and automated reporting features that help businesses make data-driven decisions with confidence.",
-    category: "Data Science",
-    tags: ["AI & ML", "Data Visualization"],
-    image: "/api/placeholder/800/400",
-    liveUrl: "https://demo-analytics.com",
-    githubUrl: "https://github.com/youruser/analytics-dashboard",
-    featured: true,
-    completedDate: "2024-11-20",
-    duration: "8 months",
-    teamSize: "6 specialists",
-    status: "Completed",
-    technologies: ["Python", "TensorFlow", "React", "D3.js", "PostgreSQL", "Apache Kafka", "Docker", "Kubernetes"],
-    challenges: [
-      "Processing massive datasets in real-time without performance degradation",
-      "Creating intuitive visualizations for complex machine learning insights",
-      "Building accurate predictive models with continuous learning capabilities"
-    ],
-    solutions: [
-      "Implemented streaming data pipeline with Apache Kafka for real-time processing",
-      "Developed custom D3.js visualization components with interactive features",
-      "Built ensemble ML models with automated retraining and validation"
-    ],
-    results: [
-      "300% faster data processing and analysis",
-      "95% accuracy in predictive models",
-      "80% reduction in manual reporting time",
-      "Complete compliance with GDPR and SOC2 standards"
-    ]
-  }
-];
-
-const relatedProjects = [
-  {
-    id: 2,
-    title: "AI-Powered Analytics Dashboard",
-    tags: ["AI & ML", "Data Visualization"],
-    image: "/api/placeholder/300/200"
-  },
-  {
-    id: 3,
-    title: "Mobile Fitness App",
-    tags: ["Mobile Dev", "Health & Fitness"],
-    image: "/api/placeholder/300/200"
-  },
-  {
-    id: 4,
-    title: "Blockchain Supply Chain",
-    tags: ["Blockchain", "Supply Chain"],
-    image: "/api/placeholder/300/200"
-  }
-];
+import { projectsData, relatedProjects } from "./data";
 
 const ProjectDetailPage = () => {
-  const { id } = useParams();
-  const project = projectsData.find(p => p.id === parseInt(id));
+  const { slug } = useParams();
+  const project = projectsData.find(p => p.slug === slug);
 
   if (!project) {
     return (
@@ -173,7 +83,7 @@ const ProjectDetailPage = () => {
               {/* Action Buttons */}
               {(project.liveUrl || project.githubUrl) && (
                 <div className="flex flex-wrap gap-4">
-                  {project.liveUrl && (
+                  {/* {project.liveUrl && (
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <a
                         href={project.liveUrl}
@@ -184,8 +94,8 @@ const ProjectDetailPage = () => {
                         <Button>View Live Project</Button>
                       </a>
                     </motion.div>
-                  )}
-                  {project.githubUrl && (
+                  )} */}
+                  {/* {project.githubUrl && (
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <a
                         href={project.githubUrl}
@@ -196,7 +106,7 @@ const ProjectDetailPage = () => {
                         View Code
                       </a>
                     </motion.div>
-                  )}
+                  )} */}
                 </div>
               )}
             </motion.div>

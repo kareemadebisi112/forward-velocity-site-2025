@@ -4,66 +4,7 @@ import Header from "./Header";
 import FooterSection from "./FooterSection";
 import { motion } from "motion/react";
 import Button from "./mini/Button";
-
-// Mock project data - replace with your actual data
-const projectsData = [
-  {
-    id: 1,
-    title: "E-Commerce Platform Revolution",
-    description: "A comprehensive e-commerce solution built with React, Node.js, and MongoDB. Features include real-time inventory management, advanced analytics, and seamless payment integration.",
-    category: "Full Stack",
-    tags: ["Full Stack", "E-commerce"],
-    image: "/api/placeholder/400/250",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "AI-Powered Analytics Dashboard",
-    description: "Advanced analytics platform using machine learning to provide predictive insights for business growth. Real-time data visualization and automated reporting.",
-    category: "Data Science",
-    tags: ["AI & ML", "Data Visualization"],
-    image: "/api/placeholder/400/250",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Mobile Fitness Tracking App",
-    description: "Cross-platform mobile application for fitness tracking with social features, workout plans, and nutrition tracking. Built with React Native.",
-    category: "Mobile",
-    tags: ["Mobile Dev", "Health & Fitness"],
-    image: "/api/placeholder/400/250",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Blockchain Supply Chain",
-    description: "Decentralized supply chain management system using blockchain technology for transparency and traceability in manufacturing processes.",
-    category: "Blockchain",
-    tags: ["Blockchain", "Supply Chain"],
-    image: "/api/placeholder/400/250",
-    featured: true,
-  },
-  {
-    id: 5,
-    title: "Real-Time Chat Platform",
-    description: "Scalable real-time messaging platform with video calls, file sharing, and team collaboration features. Built for enterprise use.",
-    category: "Full Stack",
-    tags: ["Full Stack", "Communication"],
-    image: "/api/placeholder/400/250",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "IoT Smart Home System",
-    description: "Comprehensive IoT solution for smart home automation with AI-powered energy optimization and security monitoring.",
-    category: "IoT",
-    tags: ["IoT", "Smart Home"],
-    image: "/api/placeholder/400/250",
-    featured: false,
-  }
-];
-
-const categories = ["All", "Full Stack", "Mobile Dev", "AI & ML", "Blockchain", "Data Visualization", "IoT"];
+import { projectsData, categories } from "./data";
 
 const ProjectCard = ({ project, index }) => {
   return (
@@ -75,7 +16,7 @@ const ProjectCard = ({ project, index }) => {
       viewport={{ once: true, amount: 0.3 }}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
     >
-      <Link to={`/projects/${project.id}`}>
+      <Link to={`/projects/${project.slug}`}>
         <div className="card_inner_wrapper">
           <div className="img_wrapper">
             <img

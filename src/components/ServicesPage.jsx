@@ -12,7 +12,7 @@ const services = [
   {
     title: "Custom Solutions That Scale",
     subtitle: "BUILD FOR GROWTH",
-    description: "Ready to build something new? Once your foundation is solid, we create custom software that automates your processes, serves your customers better, and grows with your business. From internal tools to customer-facing platforms — built to your exact needs.",
+    description: "Ready for something new? We build custom software that automates your processes and scales with your business.",
     features: [
       "Custom web applications",
       "Internal automation tools", 
@@ -27,7 +27,7 @@ const services = [
   {
     title: "Systems & Integration",
     subtitle: "CONNECT YOUR TOOLS",
-    description: "Your tools should talk to each other. We connect the dots between your CRM, website, forms, and internal systems — no more double work. Not technical? We'll walk you through everything in plain English.",
+    description: "Stop doing everything twice. We make your CRM, website, and internal systems talk to each other—automatically.",
     features: [
       "CRM & website integration",
       "Automated workflows",
@@ -42,7 +42,7 @@ const services = [
   {
     title: "Speed & Performance",
     subtitle: "MAKE IT FAST",
-    description: "Your site shouldn't make people wait. We optimize load times, fix clunky pages, and speed up the tech behind your customer experience. Most performance fixes take less than 10 days.",
+    description: "Your site shouldn't make customers wait. We fix slow pages and optimize everything behind your customer experience.",
     features: [
       "Site speed optimization",
       "Database performance tuning",
@@ -57,7 +57,7 @@ const services = [
   {
     title: "Cleanup & Fixes",
     subtitle: "FIX WHAT'S BROKEN",
-    description: "Old dev work? We clean it up. Broken features, half-built tools, mysterious bugs — you bring it in, debug, and get it back on track. You'll get clear scopes and pricing before anything starts.",
+    description: "Broken features, mystery bugs, half-built tools—we debug it and get you back on track. Clear pricing upfront, fast turnaround guaranteed.",
     features: [
       "Bug fixes & debugging",
       "Code refactoring",
@@ -75,22 +75,22 @@ const process = [
   {
     step: "01",
     title: "Discovery Call",
-    description: "We start with a 30-minute call to understand your needs, current setup, and goals."
+    description: "30 minutes to understand your needs and current setup."
   },
   {
     step: "02", 
     title: "Technical Audit",
-    description: "We analyze your existing systems, identify bottlenecks, and create a detailed action plan."
+    description: "We find your bottlenecks and create an action plan."
   },
   {
     step: "03",
     title: "Proposal & Timeline",
-    description: "You get a clear proposal with fixed pricing, timeline, and exactly what we'll deliver."
+    description: "Fixed pricing, clear timeline, exact deliverables."
   },
   {
     step: "04",
     title: "Build & Deploy",
-    description: "We build your solution with regular updates and deploy it with zero downtime."
+    description: "Regular updates, zero downtime deployment."
   }
 ];
 
@@ -121,8 +121,7 @@ const ServicesPage = () => {
           </h1>
           
           <p className="text-xl max-w-2xl mx-auto mb-8 text-white">
-            From quick fixes to custom builds, we handle the technical headaches 
-            so you can focus on growing your business.
+            Quick fixes to custom builds, we handle the technical headaches so you can focus on growth.
           </p>
 
           <div className="flex gap-4">
@@ -152,8 +151,7 @@ const ServicesPage = () => {
               What we do
             </h2>
             <p className="text-gray-text text-xl max-w-2xl mx-auto">
-              Four core services that solve the most common tech problems 
-              founders and small teams face.
+              Our four services that solve the tech problems killing your productivity.
             </p>
           </div>
 
@@ -222,14 +220,14 @@ const ServicesPage = () => {
       {/* Process Section */}
       <section className="w-full py-20 px-4 md:px-8">
         <div className="max-w-[1440px] mx-auto bg-white rounded-[2rem] shadow-xl flex flex-col items-center p-8 md:p-14">
-          <h2 className="text-black text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-black text-4xl md:text-5xl font-bold text-center mb-12">
             How we work together
           </h2>
-          <div className="text-gray-text text-base text-center mb-12">
+          {/* <div className="text-gray-text text-base text-center mb-12">
             A clear, predictable process from start to finish.
-          </div>
+          </div> */}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full pb-12">
             {process.map((step, idx) => (
               <div key={idx}>
                 <CurvedCard color="#E7EBE7">
@@ -241,7 +239,7 @@ const ServicesPage = () => {
                       <h3 className="text-black font-bold text-xl mb-4">
                         {step.title}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 text-sm pb-4">
                         {step.description}
                       </p>
                     </div>
@@ -262,11 +260,10 @@ const ServicesPage = () => {
       <section className="relative w-full py-20 px-4 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-white text-4xl md:text-6xl font-bold mb-6">
-            Ready to fix what's broken?
+            Stop fighting your tech.
           </h2>
           <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-            Start with a free technical audit. We'll show you exactly what's 
-            slowing you down and how to fix it.
+            Start with a free audit. We'll show you what's broken and exactly how to fix it.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div>

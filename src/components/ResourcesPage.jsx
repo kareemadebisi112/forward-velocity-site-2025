@@ -7,144 +7,144 @@ import { FaDownload, FaFilePdf, FaStar, FaEye } from "react-icons/fa";
 
 // Mock data - replace this with your actual backend API call
 const mockResources = [
-  {
-    id: 1,
-    title: "Complete Business Automation Checklist",
-    description: "A comprehensive 25-page guide covering every aspect of business process automation, from identification to implementation.",
-    price: 29.99,
-    originalPrice: 49.99,
-    category: "Automation",
-    type: "PDF Guide",
-    pages: 25,
-    downloadCount: 1247,
-    rating: 4.8,
-    reviews: 156,
-    imageUrl: "/api/placeholder/300/400",
-    features: [
-      "Step-by-step automation roadmap",
-      "Process identification templates", 
-      "ROI calculation worksheets",
-      "Implementation timeline",
-      "Bonus: 15 automation tools comparison"
-    ],
-    preview: "Get a sneak peek of the first 5 pages",
-    tags: ["automation", "productivity", "templates"]
-  },
-  {
-    id: 2,
-    title: "Scaling Systems Blueprint",
-    description: "Learn how to build systems that grow with your business. Includes templates, frameworks, and real-world case studies.",
-    price: 39.99,
-    originalPrice: 69.99,
-    category: "Scaling",
-    type: "PDF + Templates",
-    pages: 42,
-    downloadCount: 892,
-    rating: 4.9,
-    reviews: 203,
-    imageUrl: "/api/placeholder/300/400",
-    features: [
-      "Scalability assessment framework",
-      "System architecture templates",
-      "Growth planning worksheets",
-      "6 detailed case studies",
-      "Bonus: Video walkthrough (45 min)"
-    ],
-    preview: "Preview available",
-    tags: ["scaling", "systems", "growth"]
-  },
-  {
-    id: 3,
-    title: "Workflow Optimization Toolkit",
-    description: "Transform chaotic processes into streamlined workflows. Includes mapping tools, optimization techniques, and measurement frameworks.",
-    price: 24.99,
-    originalPrice: 39.99,
-    category: "Workflows",
-    type: "PDF + Spreadsheets",
-    pages: 18,
-    downloadCount: 1689,
-    rating: 4.7,
-    reviews: 289,
-    imageUrl: "/api/placeholder/300/400",
-    features: [
-      "Process mapping templates",
-      "Bottleneck identification guide",
-      "Optimization techniques library",
-      "Performance measurement tools",
-      "Ready-to-use spreadsheet templates"
-    ],
-    preview: "Free sample chapter",
-    tags: ["workflow", "optimization", "efficiency"]
-  },
-  {
-    id: 4,
-    title: "Tech Stack Decision Framework",
-    description: "Make informed technology decisions with this comprehensive evaluation framework. Perfect for growing businesses choosing their tech stack.",
-    price: 34.99,
-    originalPrice: 54.99,
-    category: "Technology",
-    type: "PDF + Checklists",
-    pages: 31,
-    downloadCount: 567,
-    rating: 4.6,
-    reviews: 98,
-    imageUrl: "/api/placeholder/300/400",
-    features: [
-      "Technology evaluation matrix",
-      "Cost-benefit analysis templates",
-      "Integration assessment guides",
-      "Vendor comparison checklists",
-      "Implementation planning tools"
-    ],
-    preview: "View table of contents",
-    tags: ["technology", "decision-making", "planning"]
-  },
-  {
-    id: 5,
-    title: "Revenue Operations Playbook",
-    description: "Align your sales, marketing, and customer success teams with proven RevOps strategies and implementation guides.",
-    price: 44.99,
-    originalPrice: 79.99,
-    category: "Revenue Ops",
-    type: "PDF + Templates",
-    pages: 55,
-    downloadCount: 423,
-    rating: 5.0,
-    reviews: 67,
-    imageUrl: "/api/placeholder/300/400",
-    features: [
-      "RevOps strategy framework",
-      "Team alignment worksheets",
-      "KPI tracking templates",
-      "Process documentation guides",
-      "Quarterly planning templates"
-    ],
-    preview: "Executive summary available",
-    tags: ["revenue", "operations", "alignment"]
-  },
-  {
-    id: 6,
-    title: "Data Analytics Starter Kit",
-    description: "Transform your business data into actionable insights. Includes dashboard templates, analysis frameworks, and reporting tools.",
-    price: 27.99,
-    originalPrice: 44.99,
-    category: "Analytics",
-    type: "PDF + Dashboards",
-    pages: 33,
-    downloadCount: 1156,
-    rating: 4.8,
-    reviews: 178,
-    imageUrl: "/api/placeholder/300/400",
-    features: [
-      "Analytics implementation roadmap",
-      "KPI selection framework",
-      "Dashboard design templates",
-      "Report automation guides",
-      "Google Analytics setup checklist"
-    ],
-    preview: "Sample dashboard included",
-    tags: ["analytics", "data", "reporting"]
-  }
+//   {
+//     id: 1,
+//     title: "Complete Business Automation Checklist",
+//     description: "A comprehensive 25-page guide covering every aspect of business process automation, from identification to implementation.",
+//     price: 29.99,
+//     originalPrice: 49.99,
+//     category: "Automation",
+//     type: "PDF Guide",
+//     pages: 25,
+//     downloadCount: 1247,
+//     rating: 4.8,
+//     reviews: 156,
+//     imageUrl: "/api/placeholder/300/400",
+//     features: [
+//       "Step-by-step automation roadmap",
+//       "Process identification templates", 
+//       "ROI calculation worksheets",
+//       "Implementation timeline",
+//       "Bonus: 15 automation tools comparison"
+//     ],
+//     preview: "Get a sneak peek of the first 5 pages",
+//     tags: ["automation", "productivity", "templates"]
+//   },
+//   {
+//     id: 2,
+//     title: "Scaling Systems Blueprint",
+//     description: "Learn how to build systems that grow with your business. Includes templates, frameworks, and real-world case studies.",
+//     price: 39.99,
+//     originalPrice: 69.99,
+//     category: "Scaling",
+//     type: "PDF + Templates",
+//     pages: 42,
+//     downloadCount: 892,
+//     rating: 4.9,
+//     reviews: 203,
+//     imageUrl: "/api/placeholder/300/400",
+//     features: [
+//       "Scalability assessment framework",
+//       "System architecture templates",
+//       "Growth planning worksheets",
+//       "6 detailed case studies",
+//       "Bonus: Video walkthrough (45 min)"
+//     ],
+//     preview: "Preview available",
+//     tags: ["scaling", "systems", "growth"]
+//   },
+//   {
+//     id: 3,
+//     title: "Workflow Optimization Toolkit",
+//     description: "Transform chaotic processes into streamlined workflows. Includes mapping tools, optimization techniques, and measurement frameworks.",
+//     price: 24.99,
+//     originalPrice: 39.99,
+//     category: "Workflows",
+//     type: "PDF + Spreadsheets",
+//     pages: 18,
+//     downloadCount: 1689,
+//     rating: 4.7,
+//     reviews: 289,
+//     imageUrl: "/api/placeholder/300/400",
+//     features: [
+//       "Process mapping templates",
+//       "Bottleneck identification guide",
+//       "Optimization techniques library",
+//       "Performance measurement tools",
+//       "Ready-to-use spreadsheet templates"
+//     ],
+//     preview: "Free sample chapter",
+//     tags: ["workflow", "optimization", "efficiency"]
+//   },
+//   {
+//     id: 4,
+//     title: "Tech Stack Decision Framework",
+//     description: "Make informed technology decisions with this comprehensive evaluation framework. Perfect for growing businesses choosing their tech stack.",
+//     price: 34.99,
+//     originalPrice: 54.99,
+//     category: "Technology",
+//     type: "PDF + Checklists",
+//     pages: 31,
+//     downloadCount: 567,
+//     rating: 4.6,
+//     reviews: 98,
+//     imageUrl: "/api/placeholder/300/400",
+//     features: [
+//       "Technology evaluation matrix",
+//       "Cost-benefit analysis templates",
+//       "Integration assessment guides",
+//       "Vendor comparison checklists",
+//       "Implementation planning tools"
+//     ],
+//     preview: "View table of contents",
+//     tags: ["technology", "decision-making", "planning"]
+//   },
+//   {
+//     id: 5,
+//     title: "Revenue Operations Playbook",
+//     description: "Align your sales, marketing, and customer success teams with proven RevOps strategies and implementation guides.",
+//     price: 44.99,
+//     originalPrice: 79.99,
+//     category: "Revenue Ops",
+//     type: "PDF + Templates",
+//     pages: 55,
+//     downloadCount: 423,
+//     rating: 5.0,
+//     reviews: 67,
+//     imageUrl: "/api/placeholder/300/400",
+//     features: [
+//       "RevOps strategy framework",
+//       "Team alignment worksheets",
+//       "KPI tracking templates",
+//       "Process documentation guides",
+//       "Quarterly planning templates"
+//     ],
+//     preview: "Executive summary available",
+//     tags: ["revenue", "operations", "alignment"]
+//   },
+//   {
+//     id: 6,
+//     title: "Data Analytics Starter Kit",
+//     description: "Transform your business data into actionable insights. Includes dashboard templates, analysis frameworks, and reporting tools.",
+//     price: 27.99,
+//     originalPrice: 44.99,
+//     category: "Analytics",
+//     type: "PDF + Dashboards",
+//     pages: 33,
+//     downloadCount: 1156,
+//     rating: 4.8,
+//     reviews: 178,
+//     imageUrl: "/api/placeholder/300/400",
+//     features: [
+//       "Analytics implementation roadmap",
+//       "KPI selection framework",
+//       "Dashboard design templates",
+//       "Report automation guides",
+//       "Google Analytics setup checklist"
+//     ],
+//     preview: "Sample dashboard included",
+//     tags: ["analytics", "data", "reporting"]
+//   }
 ];
 
 const ResourceCard = ({ resource }) => {

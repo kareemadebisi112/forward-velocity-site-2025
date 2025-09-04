@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import Button from "./mini/Button";
 import SecondaryButton from "./mini/SecondaryButton";
 import { OptimizedBlob3D } from "./Optimized3D";
@@ -33,7 +34,9 @@ const NewsletterSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row w-full gap-4">
             <div className="hover:scale-105 transition-transform duration-300">
-              <Button>See What's Broken</Button>
+              <Link to="/start">
+                <Button>See What's Broken</Button>
+              </Link>
             </div>
             <div className="hover:scale-105 transition-transform duration-300">
               <SecondaryButton>Have questions? Let's talk.</SecondaryButton>

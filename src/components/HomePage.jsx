@@ -9,11 +9,9 @@ import NewsletterSection from "./NewsletterSection";
 import FooterSection from "./FooterSection";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { useReducedMotion, getOptimizedAnimationProps } from "../hooks/useReducedMotion";
 
 function HomePage() {
   const [scrollY, setScrollY] = useState(0);
-  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,52 +22,65 @@ function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Get optimized animation props
-  const containerProps = getOptimizedAnimationProps(shouldReduceMotion, {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    transition: { duration: 0.8 }
-  });
-
-  const sectionProps = getOptimizedAnimationProps(shouldReduceMotion, {
-    initial: { opacity: 0, y: 50 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: "easeOut" },
-    viewport: { once: true, amount: 0.3 }
-  });
-
-  const sectionPropsDelayed = getOptimizedAnimationProps(shouldReduceMotion, {
-    initial: { opacity: 0, y: 50 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.1 },
-    viewport: { once: true, amount: 0.3 }
-  });
-
   return (
     <div className="">
       <Hero />
-      <motion.div {...containerProps}>
-        <motion.div {...sectionProps}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <FoundersSection />
         </motion.div>
 
-        <motion.div {...sectionPropsDelayed}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <FixSection />
         </motion.div>
 
-        <motion.div {...sectionPropsDelayed}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut"}}
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <StepsSection />
         </motion.div>
 
-        <motion.div {...sectionPropsDelayed}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut"}}
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <CostSection />
         </motion.div>
 
-        <motion.div {...sectionPropsDelayed}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut"}}
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <TestimonialsSection />
         </motion.div>
 
-        <motion.div {...sectionPropsDelayed}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut"}}
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <NewsletterSection />
         </motion.div>
       </motion.div>

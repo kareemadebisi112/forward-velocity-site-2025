@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./mini/Button";
 import Logo from "./mini/Logo";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { useNewsletterSubmission } from "../hooks/useFormSubmission";
 
 const FooterSection = () => {
+  const [email, setEmail] = useState("");
+  
+  const { isSubmitting, submitted, submit, reset } = useNewsletterSubmission({
+    onSuccess: () => {
+      setEmail("");
+      setTimeout(() => reset(), 3000); // Reset after 3 seconds
+    }
+  });
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || isSubmitting) return;
+
+    await submit(
+      "newsletter",
+      "site-footer",
+      {
+        email: email,
+        form_type: "newsletter_signup"
+      },
+      {
+        consent: {
+          newsletter: true
+        }
+      }
+    );
+  };
   return (
     <footer className="w-full relative pt-16 px-4 md:px-16">
       <div
@@ -28,19 +56,33 @@ const FooterSection = () => {
           </div>
 
           <div className="flex flex-col items-center w-full md:w-auto">
-            <form className="flex gap-2 items-center w-full md:w-auto">
+            <form onSubmit={handleNewsletterSubmit} className="flex gap-2 items-center w-full md:w-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="px-6 py-4 rounded-lg bg-black/50 text-white border-none outline-none w-48 md:w-64 transition-all duration-300 focus:shadow-[0_0_0_2px_rgb(34_197_94)] focus:bg-black/70"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isSubmitting || submitted}
+                className="px-6 py-4 rounded-lg bg-black/50 text-white border-none outline-none w-48 md:w-64 transition-all duration-300 focus:shadow-[0_0_0_2px_rgb(34_197_94)] focus:bg-black/70 disabled:opacity-50"
+                required
               />
               <div className="hover:scale-105 active:scale-95 transition-transform duration-300">
-                <Button className="bg-green-500 text-black font-semibold px-6 py-2">
-                  Subscribe
+                <Button 
+                  type="submit"
+                  disabled={isSubmitting || submitted || !email}
+                  className={`font-semibold px-6 py-2 ${
+                    submitted 
+                      ? "bg-green-600 text-white" 
+                      : "bg-green-500 text-black"
+                  }`}
+                >
+                  {submitted ? "✓ Subscribed!" : isSubmitting ? "..." : "Subscribe"}
                 </Button>
               </div>
             </form>
-            <small className="text-gray-400 mt-2">Unsubscribe any time.</small>
+            <small className="text-gray-400 mt-2">
+              {submitted ? "Welcome aboard! 🚀" : "Unsubscribe any time."}
+            </small>
           </div>
         </div>
 
@@ -59,10 +101,9 @@ const FooterSection = () => {
               {[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" }, 
-                { label: "Projects", href: "#" },
+                { label: "Projects", href: "/projects" },
                 { label: "Contact", href: "/contact" },
-                { label: "Blog", href: "/blog" },
-                { label: "Resources", href: "/resources" }
+                // { label: "Resources", href: "/resources" }
               ].map((nav, idx) => (
                 <a
                   key={nav.label}
@@ -89,11 +130,11 @@ const FooterSection = () => {
                   className: "bg-black border border-gray-700",
                   href: "https://www.instagram.com/forwardvelocityllc/",
                 },
-                {
-                  icon: FaFacebookF,
-                  className: "bg-black border border-gray-700",
-                  href: "#",
-                },
+                // {
+                //   icon: FaFacebookF,
+                //   className: "bg-black border border-gray-700",
+                //   href: "#",
+                // },
               ].map((social, index) => (
                 <a
                   key={index}

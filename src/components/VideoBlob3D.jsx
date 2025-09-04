@@ -49,8 +49,7 @@ const VideoBlob3D = ({ size = 340 }) => {
         }}
         onError={() => setVideoError(true)}
       >
-        <source src="/assets/blob3d-animation.webm" type="video/webm" />
-        <source src="/assets/blob3d-animation.mp4" type="video/mp4" />
+        <source src="https://velocity.sfo3.cdn.digitaloceanspaces.com/Forward%20Velocity%20Site/Videos/blob3d-animation.webm" type="video/webm" />
       </video>
     </div>
   );

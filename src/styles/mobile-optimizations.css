@@ -1,0 +1,91 @@
+/* Mobile Performance Optimizations */
+
+/* Reduce motion only for users who specifically prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile optimizations without disabling animations entirely */
+@media (max-width: 768px) {
+  /* Optimize 3D rendering performance */
+  canvas {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .motion-safe\:animate-spin {
+    animation-duration: 2s !important; /* Slower spin for better performance */
+  }
+  
+  .motion-safe\:animate-pulse {
+    animation-duration: 3s !important; /* Slower pulse */
+  }
+  
+  /* Optimize scroll performance */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Reduce blur intensity on mobile */
+  .blur-xl {
+    filter: blur(12px) !important;
+  }
+  
+  .blur-3xl {
+    filter: blur(20px) !important;
+  }
+  
+  /* Optimize shadows for mobile */
+  .drop-shadow-lg,
+  .shadow-lg,
+  .shadow-xl {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* GPU acceleration hints */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
+/* Optimizations for very small screens */
+@media (max-width: 480px) {
+  /* Reduce gradient complexity only on very small screens */
+  .bg-gradient-to-br,
+  .bg-gradient-to-t,
+  .bg-gradient-to-r {
+    background-image: linear-gradient(135deg, var(--tw-gradient-stops)) !important;
+  }
+  
+  /* Reduce hover effect intensity */
+  .hover\:scale-105:hover {
+    transform: scale(1.02) !important;
+  }
+}
+
+/* Battery-saving optimizations for low-end devices */
+@media (max-width: 768px) and (max-resolution: 150dpi) {
+  /* Further optimizations for low-end devices */
+  * {
+    will-change: auto !important;
+  }
+  
+  /* Reduce animation frame rates */
+  .animate-spin {
+    animation-duration: 3s !important;
+  }
+  
+  .animate-pulse {
+    animation-duration: 4s !important;
+  }
+}

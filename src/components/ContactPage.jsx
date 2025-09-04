@@ -1,24 +1,32 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
+import ReCAPTCHA from "react-google-recaptcha";
 import Header from "./Header";
 import FooterSection from "./FooterSection";
 import Button from "./mini/Button";
 import SecondaryButton from "./mini/SecondaryButton";
+import { useProjectInquirySubmission } from "../hooks/useFormSubmission";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
+    role: "",
     phone: "",
     projectType: "",
     timeline: "",
     budget: "",
     message: "",
+    newsletterSignup: false,
+    captchaToken: null
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const { isSubmitting, submitted, submit } = useProjectInquirySubmission({
+    onSuccess: () => {
+      // Form submission successful, submitted state will be true
+    }
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,13 +38,35 @@ const ContactPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    if (!formData.captchaToken) {
+      alert("Please complete the verification by checking the box above.");
+      return;
+    }
     
-    setIsSubmitting(false);
-    setSubmitted(true);
+    await submit(
+      "contact",
+      "contact-page",
+      {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        role: formData.role,
+        phone: formData.phone,
+        project_type: formData.projectType,
+        timeline: formData.timeline,
+        budget: formData.budget,
+        message: formData.message,
+        form_type: "contact_page"
+      },
+      {
+        consent: {
+          terms: true,
+          newsletter: formData.newsletterSignup,
+          captcha_verified: true
+        }
+      }
+    );
   };
 
   if (submitted) {
@@ -116,8 +146,7 @@ const ContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Ready to fix what's broken and scale what's working? 
-            Tell us about your project and we'll get you a custom plan within 24 hours.
+            Tell us about your project. We'll get you a custom plan within 24 hours.
           </motion.p>
         </div>
       </section>
@@ -183,23 +212,45 @@ const ContactPage = () => {
                   
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">
-                      Phone Number
+                      Your Role
                     </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
+                    <select
+                      name="role"
+                      value={formData.role}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-green-400 focus:outline-none transition-colors"
-                      placeholder="(555) 123-4567"
-                    />
+                      className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-green-400 focus:outline-none transition-colors"
+                    >
+                      <option value="">Select your role</option>
+                      <option value="founder">Founder/CEO</option>
+                      <option value="cto">CTO/Tech Lead</option>
+                      <option value="marketing">Marketing Director</option>
+                      <option value="operations">Operations Manager</option>
+                      {/* <option value="product">Product Manager</option> */}
+                      {/* <option value="developer">Developer</option> */}
+                      {/* <option value="consultant">Consultant</option> */}
+                      <option value="other">Other</option>
+                    </select>
                   </div>
+                </div>
+
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-green-400 focus:outline-none transition-colors"
+                    placeholder="(555) 123-4567"
+                  />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">
-                      Project Type *
+                      What do you need? *
                     </label>
                     <select
                       name="projectType"
@@ -260,7 +311,7 @@ const ContactPage = () => {
 
                 <div>
                   <label className="block text-white text-sm font-medium mb-2">
-                    Tell us about your project *
+                    What's the problem? *
                   </label>
                   <textarea
                     name="message"
@@ -273,6 +324,29 @@ const ContactPage = () => {
                   />
                 </div>
 
+                <div className="flex items-start gap-3 p-4 rounded-xl border border-gray-700 bg-gray-900/50">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.newsletterSignup}
+                      onChange={(e) => setFormData(prev => ({ ...prev, newsletterSignup: e.target.checked }))}
+                      className="mt-1 w-5 h-5 rounded border-2 border-gray-600 bg-gray-800 checked:bg-green-400 checked:border-green-400 focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                    />
+                    <span className="text-gray-300 text-sm leading-relaxed">
+                      I'd like to receive your monthly newsletter with marketing tips, case studies, and industry insights
+                    </span>
+                  </label>
+                </div>
+
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    sitekey="6LdfN70rAAAAAPvCS2lwpq9AfiioXKLkUcDeq5Py"
+                    onChange={(token) => setFormData(prev => ({ ...prev, captchaToken: token }))}
+                    onExpired={() => setFormData(prev => ({ ...prev, captchaToken: null }))}
+                    theme="dark"
+                  />
+                </div>
+
                 <motion.div
                   className="pt-4"
                   whileHover={{ scale: 1.02 }}
@@ -280,9 +354,9 @@ const ContactPage = () => {
                 >
                   <Button 
                     type="submit" 
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !formData.captchaToken}
                     className="w-full py-4 text-lg font-semibold"
-                    glow
+                    glow={!isSubmitting && formData.captchaToken}
                   >
                     {isSubmitting ? "Sending..." : "Send Project Details"}
                   </Button>
@@ -312,7 +386,7 @@ const ContactPage = () => {
                         Quick Response
                       </h4>
                       <p className="text-gray-400">
-                        We'll review your project and get back to you within 24 hours with questions and next steps.
+                        We review your project and respond within 24 hours.
                       </p>
                     </div>
                   </div>
@@ -326,7 +400,7 @@ const ContactPage = () => {
                         Custom Proposal
                       </h4>
                       <p className="text-gray-400">
-                        We'll create a detailed plan with timeline, pricing, and exactly what we'll deliver.
+                        Detailed proposal with timeline, pricing, and deliverables.
                       </p>
                     </div>
                   </div>
@@ -340,7 +414,7 @@ const ContactPage = () => {
                         Get Started
                       </h4>
                       <p className="text-gray-400">
-                        Once approved, we start immediately. Most projects kick off within a few days.
+                        Most projects begin within days of approval.
                       </p>
                     </div>
                   </div>

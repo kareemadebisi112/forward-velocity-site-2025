@@ -53,9 +53,11 @@ const Hero = () => {
 
             <div className="flex gap-4">
               <div>
-                <Button glow className="px-10 py-5 text-lg">
-                  See What's Broken
-                </Button>
+                <Link to="/start">
+                  <Button glow className="px-10 py-5 text-lg">
+                    See What's Broken
+                  </Button>
+                </Link>
               </div>
               <div>
                 <Link to="/contact">
