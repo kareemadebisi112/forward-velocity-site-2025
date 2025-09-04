@@ -34,6 +34,8 @@ const VideoRotatingSolar = () => {
         muted
         playsInline
         autoPlay
+        preload="metadata"
+        loading="lazy"
         style={{ 
           background: 'transparent',
           mixBlendMode: 'normal'

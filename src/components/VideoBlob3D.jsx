@@ -42,6 +42,8 @@ const VideoBlob3D = ({ size = 340 }) => {
         muted
         playsInline
         autoPlay
+        preload="metadata"
+        loading="lazy"
         className="object-cover rounded-full"
         style={{ 
           background: 'transparent',

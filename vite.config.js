@@ -13,29 +13,40 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    chunkSizeWarningLimit: 1000, // Increase warning limit
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        // Better code splitting
+        // Better code splitting for performance
         manualChunks: {
           'three': ['three'],
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'motion': ['framer-motion', 'motion'],
           'icons': ['react-icons']
         },
-        // Ensure consistent asset naming
+        // Consistent asset naming
         assetFileNames: 'assets/[name]-[hash][extname]',
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js'
       }
-    }
+    },
+    // Enable gzip compression
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    target: 'esnext'
   },
+  // Add caching headers configuration
   server: {
     port: 5173,
-    open: true
+    open: true,
+    headers: {
+      'Cache-Control': 'public, max-age=31536000'
+    }
   },
   preview: {
     port: 8080,
-    open: true
+    open: true,
+    headers: {
+      'Cache-Control': 'public, max-age=31536000'
+    }
   }
 })

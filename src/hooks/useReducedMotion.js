@@ -13,10 +13,11 @@ export const useReducedMotion = () => {
       setShouldReduceMotion(mediaQuery.matches);
     };
 
-    mediaQuery.addListener(handleChange);
+    // Use the newer addEventListener API
+    mediaQuery.addEventListener('change', handleChange);
 
     return () => {
-      mediaQuery.removeListener(handleChange);
+      mediaQuery.removeEventListener('change', handleChange);
     };
   }, []);
 
@@ -29,18 +30,25 @@ export const getOptimizedAnimationProps = (shouldReduceMotion, originalProps = {
     return {
       initial: { opacity: 0.5 },
       whileInView: { opacity: 1 },
-      transition: { duration: 0.2, ease: "linear" },
+      transition: { duration: 0.1, ease: "linear" },
       viewport: { once: true, amount: 0.1 },
       ...originalProps
     };
   }
   
-  // Standard animations for all devices
+  // Optimized animations with better performance
   return {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" },
-    viewport: { once: true, amount: 0.3 },
+    transition: { 
+      duration: 0.5, 
+      ease: "easeOut",
+      // Optimize for performance - avoid layout thrashing
+      willChange: "transform, opacity"
+    },
+    viewport: { once: true, amount: 0.2 },
+    // Add layout optimization
+    layout: false,
     ...originalProps
   };
 };
