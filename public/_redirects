@@ -1,2 +1,14 @@
-/*    /index.html   200
+# Netlify redirects for canonical URL consistency
+
+# Redirect www to non-www
+https://www.forward-velocity.com/* https://forward-velocity.com/:splat 301!
+
+# Ensure HTTPS
+http://forward-velocity.com/* https://forward-velocity.com/:splat 301!
+http://www.forward-velocity.com/* https://forward-velocity.com/:splat 301!
+
+# Asset handling
 /assets/*  /assets/:splat  200
+
+# SPA fallback - this should be last
+/*    /index.html   200

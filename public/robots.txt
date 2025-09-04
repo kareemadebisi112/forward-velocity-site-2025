@@ -8,6 +8,9 @@ Allow: /
 # Disallow: /admin/
 # Disallow: /private/
 
+# Specify canonical domain (no www)
+Host: forward-velocity.com
+
 # Sitemap location
 Sitemap: https://forward-velocity.com/sitemap.xml
 

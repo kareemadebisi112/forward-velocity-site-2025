@@ -9,23 +9,32 @@ import ToolsPage from "./components/ToolsPage";
 import ProjectsPage from "./components/ProjectsPage";
 import ProjectDetailPage from "./components/ProjectDetailPage";
 import IntakePortal from "./components/IntakePortal";
+import useCanonicalURL from "./hooks/useCanonicalURL";
+
+function AppContent() {
+  useCanonicalURL(); // Handle dynamic canonical URLs
+  
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/start" element={<IntakePortal />} />
+      <Route path="/services" element={<ServicesPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:id" element={<BlogDetailPage />} />
+      <Route path="/resources" element={<ResourcesPage />} />
+      <Route path="/tools" element={<ToolsPage />} />
+      <Route path="/projects" element={<ProjectsPage />} />
+      <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+    </Routes>
+  );
+}
 
 function App() {
   return (
     <Router>
       <div className="">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/start" element={<IntakePortal />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:id" element={<BlogDetailPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
-          <Route path="/tools" element={<ToolsPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-        </Routes>
+        <AppContent />
       </div>
     </Router>
   );
