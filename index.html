@@ -38,6 +38,11 @@
     <meta name="theme-color" content="#10b981" />
     <link rel="canonical" href="https://forward-velocity.com/" />
     
+    <!-- Help crawlers understand page structure -->
+    <meta name="page-type" content="business-service" />
+    <meta name="content-structure" content="hero,services,testimonials,contact" />
+    <meta name="primary-heading" content="Systems slowing down? Let's fix that." />
+    
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://api.forward-velocity.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -74,6 +79,15 @@
       .critical-fade { animation: criticalFade 0.3s ease-out forwards; }
       @keyframes criticalFade { to { opacity: 1; } }
     </style>
+    
+    <!-- Noscript fallback for SEO crawlers -->
+    <noscript>
+      <style>
+        /* Ensure content is visible without JavaScript */
+        [data-motion-div] { opacity: 1 !important; transform: none !important; }
+        .animate-fadein, .animate-slideup, .animate-pop { opacity: 1 !important; }
+      </style>
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

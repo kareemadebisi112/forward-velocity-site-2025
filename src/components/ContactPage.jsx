@@ -90,14 +90,11 @@ const ContactPage = () => {
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             </motion.div>
-            <motion.h1
+            <h1
               className="text-white text-4xl md:text-5xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
             >
               Thanks for reaching out!
-            </motion.h1>
+            </h1>
             <motion.p
               className="text-gray-400 text-xl mb-8"
               initial={{ opacity: 0, y: 20 }}
@@ -129,16 +126,13 @@ const ContactPage = () => {
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
+          <h1
             className="text-white text-5xl md:text-7xl font-bold mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
             Let's build something
             <br />
             <span className="text-green-400">amazing together</span>
-          </motion.h1>
+          </h1>
           
           <motion.p
             className="text-gray-400 text-xl md:text-2xl mb-12 max-w-3xl mx-auto"

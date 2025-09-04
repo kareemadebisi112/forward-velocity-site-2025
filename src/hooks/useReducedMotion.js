@@ -25,12 +25,19 @@ export const useReducedMotion = () => {
 };
 
 export const getOptimizedAnimationProps = (shouldReduceMotion, originalProps = {}) => {
-  if (shouldReduceMotion) {
-    // Reduce animation complexity for users who prefer reduced motion
+  // Check if this is a crawler/bot (no animation for better SEO)
+  const isCrawler = typeof navigator !== 'undefined' && (
+    /bot|crawler|spider|crawling/i.test(navigator.userAgent) ||
+    window.location.search.includes('ahrefs') ||
+    window.location.search.includes('crawler')
+  );
+  
+  if (shouldReduceMotion || isCrawler) {
+    // No animation for crawlers or users who prefer reduced motion
     return {
-      initial: { opacity: 0.5 },
-      whileInView: { opacity: 1 },
-      transition: { duration: 0.1, ease: "linear" },
+      initial: { opacity: 1 },
+      animate: { opacity: 1 },
+      transition: { duration: 0 },
       viewport: { once: true, amount: 0.1 },
       ...originalProps
     };

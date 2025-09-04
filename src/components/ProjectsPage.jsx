@@ -56,14 +56,11 @@ const ProjectsPage = () => {
         <div className="container max-w-7xl mx-auto">
           <div className="row">
             <div className="col-12">
-              <motion.h1
+              <h1
                 className="text-white text-5xl md:text-7xl font-bold leading-tight mb-12 font-archivo"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 Our work — built with precision <br />and innovation
-              </motion.h1>
+              </h1>
             </div>
             
             {/* Filter Toolbar */}
