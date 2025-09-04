@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { prerender } from 'vite-plugin-prerender'
+import prerender from '@prerenderer/rollup-plugin'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -18,11 +18,15 @@ export default defineConfig({
         '/tools',
         '/blog'
       ],
+      renderer: 'puppeteer',
+      rendererOptions: {
+        headless: true,
+        devtools: false
+      },
       postProcess(renderedRoute) {
         // Clean up the HTML if needed
         renderedRoute.html = renderedRoute.html
           .replace(/<script (.*?)>/gi, '<script $1>')
-          .replace('id="app"', 'id="root"')
         return renderedRoute
       }
     })
