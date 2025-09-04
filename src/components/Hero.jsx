@@ -32,12 +32,12 @@ const Hero = () => {
 
       {/* Hero Content */}
       <motion.div
-        className="absolute inset-0 h-full w-full z-10 flex flex-col max-w-[1440px] justify-self-center justify-evenly"
+        className="absolute inset-0 h-full w-full z-10 flex flex-col justify-center items-center"
         {...heroContentProps}
       >
-        <main className="flex flex-col w-full h-full justify-center">
+        <main className="flex flex-col w-full max-w-[1440px] h-full justify-center px-6 md:px-12 lg:px-16">
           <div className="self-start">
-            <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight mb-6 font-archivo drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)]">
+            <h1 className="text-white font-bold leading-tight mb-6 font-archivo drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)] !text-5xl sm:!text-6xl md:!text-7xl lg:!text-8xl md:pl-6 pl-0">
               Systems
               <br />
               slowing down?
@@ -47,7 +47,7 @@ const Hero = () => {
           </div>
 
           <div className="flex self-end flex-col items-start gap-8">
-            <p className="text-xl max-w-lg mb-6 md:mb-0 text-white ">
+            <p className="text-xl max-w-lg mb-6 md:mb-0 text-white">
               We fix what's broken so you can grow. Expert web development, performance optimization, and system integrations.
             </p>
 

@@ -76,10 +76,17 @@
       .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
       .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
       .text-5xl { font-size: 3rem; line-height: 1; }
+      .text-6xl { font-size: 3.75rem; line-height: 1; }
+      .text-7xl { font-size: 4.5rem; line-height: 1; }
+      .text-8xl { font-size: 6rem; line-height: 1; }
       .font-bold { font-weight: 700; }
       .animate-fadein, .animate-slideup, .animate-pop { opacity: 0; }
       .critical-fade { animation: criticalFade 0.3s ease-out forwards; }
       @keyframes criticalFade { to { opacity: 1; } }
+      /* Responsive typography */
+      @media (min-width: 640px) { .sm\:text-6xl { font-size: 3.75rem !important; line-height: 1; } }
+      @media (min-width: 768px) { .md\:text-7xl { font-size: 4.5rem !important; line-height: 1; } }
+      @media (min-width: 1024px) { .lg\:text-8xl { font-size: 6rem !important; line-height: 1; } }
     </style>
     
     <!-- Noscript fallback for SEO crawlers -->

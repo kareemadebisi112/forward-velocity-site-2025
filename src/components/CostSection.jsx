@@ -133,7 +133,7 @@ const CostSection = () => {
             }}
             animate={{
               opacity: [0.5, 0.7, 0.5],
-              scale: [1, 1.05, 1],
+              scale: [0.6, 0.5, 0.6],
               x: [0, 10, 0],
             }}
             transition={{
