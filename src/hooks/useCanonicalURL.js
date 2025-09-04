@@ -5,6 +5,11 @@ export const useCanonicalURL = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Build canonical URL - always use non-www
+    const baseURL = 'https://forward-velocity.com';
+    const pathname = location.pathname === '/' ? '/' : location.pathname;
+    const canonicalURL = pathname === '/' ? baseURL + '/' : baseURL + pathname;
+
     // Remove existing canonical link
     const existingCanonical = document.querySelector('link[rel="canonical"]');
     if (existingCanonical) {
@@ -14,11 +19,7 @@ export const useCanonicalURL = () => {
     // Create new canonical link for current page
     const canonical = document.createElement('link');
     canonical.setAttribute('rel', 'canonical');
-    
-    // Build canonical URL - always use non-www
-    const baseURL = 'https://forward-velocity.com';
-    const pathname = location.pathname === '/' ? '' : location.pathname;
-    canonical.setAttribute('href', `${baseURL}${pathname}`);
+    canonical.setAttribute('href', canonicalURL);
     
     // Add to head
     document.head.appendChild(canonical);
@@ -30,7 +31,7 @@ export const useCanonicalURL = () => {
       ogURL.setAttribute('property', 'og:url');
       document.head.appendChild(ogURL);
     }
-    ogURL.setAttribute('content', `${baseURL}${pathname}`);
+    ogURL.setAttribute('content', canonicalURL);
 
     // Update Twitter URL
     let twitterURL = document.querySelector('meta[property="twitter:url"]');
@@ -39,7 +40,10 @@ export const useCanonicalURL = () => {
       twitterURL.setAttribute('property', 'twitter:url');
       document.head.appendChild(twitterURL);
     }
-    twitterURL.setAttribute('content', `${baseURL}${pathname}`);
+    twitterURL.setAttribute('content', canonicalURL);
+
+    // Debug log to verify correct URLs
+    console.log(`Canonical URL set for ${location.pathname}: ${canonicalURL}`);
 
   }, [location.pathname]);
 };
