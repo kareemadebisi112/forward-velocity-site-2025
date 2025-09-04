@@ -25,27 +25,25 @@ export const useCanonicalURL = () => {
     document.head.appendChild(canonical);
 
     // Also update Open Graph URL
-    let ogURL = document.querySelector('meta[property="og:url"]');
-    if (!ogURL) {
-      ogURL = document.createElement('meta');
-      ogURL.setAttribute('property', 'og:url');
-      document.head.appendChild(ogURL);
-    }
-    ogURL.setAttribute('content', canonicalURL);
+    updateOrCreateMeta('property', 'og:url', canonicalURL);
+    updateOrCreateMeta('property', 'twitter:url', canonicalURL);
 
-    // Update Twitter URL
-    let twitterURL = document.querySelector('meta[property="twitter:url"]');
-    if (!twitterURL) {
-      twitterURL = document.createElement('meta');
-      twitterURL.setAttribute('property', 'twitter:url');
-      document.head.appendChild(twitterURL);
-    }
-    twitterURL.setAttribute('content', canonicalURL);
-
-    // Debug log to verify correct URLs
     console.log(`Canonical URL set for ${location.pathname}: ${canonicalURL}`);
 
   }, [location.pathname]);
+};
+
+// Helper function to update or create meta tags
+const updateOrCreateMeta = (attributeName, attributeValue, content) => {
+  let metaTag = document.querySelector(`meta[${attributeName}="${attributeValue}"]`);
+  
+  if (!metaTag) {
+    metaTag = document.createElement('meta');
+    metaTag.setAttribute(attributeName, attributeValue);
+    document.head.appendChild(metaTag);
+  }
+  
+  metaTag.setAttribute('content', content);
 };
 
 export default useCanonicalURL;
