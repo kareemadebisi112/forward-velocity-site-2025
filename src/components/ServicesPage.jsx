@@ -124,7 +124,7 @@ const ServicesPage = () => {
             Quick fixes to custom builds, we handle the technical headaches so you can focus on growth.
           </p>
 
-          <div className="flex gap-4">
+          <div className="">
             <div>
               <Link to="/contact">
                 <Button glow className="px-10 py-5 text-lg">
@@ -132,13 +132,13 @@ const ServicesPage = () => {
                 </Button>
               </Link>
             </div>
-            <div>
+            {/* <div>
               <Link to="/contact">
                 <SecondaryButton className="px-10 py-5 text-lg">
                   View Pricing
                 </SecondaryButton>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
