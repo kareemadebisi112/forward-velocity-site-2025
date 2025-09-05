@@ -217,7 +217,7 @@ const ProjectDetailPage = () => {
       </section>
 
       {/* Related Projects */}
-      <section className="py-20 px-4 md:px-12 bg-[#0a0a0a]">
+      {/* <section className="py-20 px-4 md:px-12 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             className="text-white text-3xl md:text-4xl font-bold mb-12 text-center"
@@ -263,7 +263,7 @@ const ProjectDetailPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="w-full py-20 px-4 md:px-12 flex items-center justify-center min-h-[400px] relative">
