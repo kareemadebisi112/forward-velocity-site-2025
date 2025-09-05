@@ -205,10 +205,11 @@ const ServicesPage = () => {
                         Timeline: {service.timeline}
                       </div>
                     </div>
-                    
-                    <SecondaryButton className="w-full">
-                      Learn More
-                    </SecondaryButton>
+                    <Link to={`/contact`}>
+                      <SecondaryButton className="w-full">
+                        Learn More
+                      </SecondaryButton>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -267,14 +268,18 @@ const ServicesPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div>
-              <Button glow className="px-8 py-4">
-                Get Free Audit
-              </Button>
+              <Link to={`/start`}>
+                <Button glow className="px-8 py-4">
+                  Get Free Audit
+                </Button>
+              </Link>
             </div>
             <div>
-              <SecondaryButton className="px-8 py-4">
-                Schedule Call
-              </SecondaryButton>
+              <Link to={`/contact`}>
+                <SecondaryButton className="px-8 py-4">
+                  Schedule Call
+                </SecondaryButton>
+              </Link>
             </div>
           </div>
         </div>
