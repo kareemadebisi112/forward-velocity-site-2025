@@ -9,12 +9,8 @@ import ToolsPage from "./components/ToolsPage";
 import ProjectsPage from "./components/ProjectsPage";
 import ProjectDetailPage from "./components/ProjectDetailPage";
 import IntakePortal from "./components/IntakePortal";
-import useCanonicalURL from "./hooks/useCanonicalURL";
-import useSEO from "./hooks/useSEO";
 
 function AppContent() {
-  useCanonicalURL(); // Handle dynamic canonical URLs
-  useSEO(); // Handle dynamic meta tags and titles
   
   return (
     <Routes>
