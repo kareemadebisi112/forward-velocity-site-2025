@@ -44,6 +44,7 @@ export default defineConfig({
   },
   preview: {
     port: 8080,
+    port: 8081,
     open: true,
     headers: {
       'Cache-Control': 'public, max-age=31536000'
